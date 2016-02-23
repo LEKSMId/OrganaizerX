@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Objeck_3-->
         <scene sceneID="Bwr-oc-gWB">
             <objects>
                 <viewController id="cA2-p5-Gom" sceneMemberID="viewController">
@@ -23,13 +23,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="U5V-RA-Lfr"/>
+                    <tabBarItem key="tabBarItem" title="Objeck_3" id="U5V-RA-Lfr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fld-zc-2XU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1510" y="698"/>
         </scene>
-        <!--Item-->
+        <!--Object_2-->
         <scene sceneID="VVP-h0-bZk">
             <objects>
                 <viewController id="06D-Z7-B8j" sceneMemberID="viewController">
@@ -47,7 +47,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="JMf-a8-IG4"/>
+                    <tabBarItem key="tabBarItem" title="Object_2" id="JMf-a8-IG4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M0q-EX-8kI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,7 +57,9 @@
         <scene sceneID="w3u-aI-cJv">
             <objects>
                 <navigationController id="45j-mM-FoA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My think" id="YCl-z3-c4x"/>
+                    <tabBarItem key="tabBarItem" title="My think" id="YCl-z3-c4x">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RDL-Mb-7E7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -115,10 +117,11 @@
         <scene sceneID="G4s-gk-4YD">
             <objects>
                 <tabBarController id="hgz-IK-7Fo" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Hnl-86-QXd">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" id="Hnl-86-QXd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="cA2-p5-Gom" kind="relationship" relationship="viewControllers" id="Qm3-ky-QvP"/>
