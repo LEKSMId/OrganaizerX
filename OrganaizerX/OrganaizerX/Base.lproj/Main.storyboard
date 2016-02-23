@@ -16,6 +16,11 @@
                     <view key="view" contentMode="scaleToFill" id="bew-Ev-lWm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="12707-NP09TT" translatesAutoresizingMaskIntoConstraints="NO" id="2ce-n6-XpH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="U5V-RA-Lfr"/>
@@ -35,6 +40,11 @@
                     <view key="view" contentMode="scaleToFill" id="p5b-U7-xWA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="12707-NP09TT" translatesAutoresizingMaskIntoConstraints="NO" id="ykh-NJ-pb6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="JMf-a8-IG4"/>
@@ -72,7 +82,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wk5-oB-1cg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="12707-NP09TT" translatesAutoresizingMaskIntoConstraints="NO" id="j8z-PA-S92">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wk5-oB-1cg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -118,4 +131,7 @@
             <point key="canvasLocation" x="-106" y="334"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="12707-NP09TT" width="1663" height="1667"/>
+    </resources>
 </document>
