@@ -8,7 +8,7 @@
         <!--Objeck_3-->
         <scene sceneID="Bwr-oc-gWB">
             <objects>
-                <viewController id="cA2-p5-Gom" sceneMemberID="viewController">
+                <viewController id="cA2-p5-Gom" customClass="ThirdViewController" customModule="OrganaizerX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Rm-sD-zDK"/>
                         <viewControllerLayoutGuide type="bottom" id="kyk-bD-pqT"/>
@@ -32,7 +32,7 @@
         <!--Object_2-->
         <scene sceneID="VVP-h0-bZk">
             <objects>
-                <viewController id="06D-Z7-B8j" sceneMemberID="viewController">
+                <viewController id="06D-Z7-B8j" customClass="SecondViewController" customModule="OrganaizerX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PfT-7M-mDx"/>
                         <viewControllerLayoutGuide type="bottom" id="AC4-xx-hWf"/>
@@ -75,7 +75,7 @@
         <!--List my think-->
         <scene sceneID="2EG-Yd-fMD">
             <objects>
-                <viewController id="inX-Mw-hiS" sceneMemberID="viewController">
+                <viewController id="inX-Mw-hiS" customClass="FirstViewController" customModule="OrganaizerX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eiu-Of-Fa5"/>
                         <viewControllerLayoutGuide type="bottom" id="seS-is-8pZ"/>
@@ -124,9 +124,9 @@
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cA2-p5-Gom" kind="relationship" relationship="viewControllers" id="Qm3-ky-QvP"/>
-                        <segue destination="06D-Z7-B8j" kind="relationship" relationship="viewControllers" id="7t9-m4-8dj"/>
                         <segue destination="45j-mM-FoA" kind="relationship" relationship="viewControllers" id="8BK-mK-WCM"/>
+                        <segue destination="06D-Z7-B8j" kind="relationship" relationship="viewControllers" id="6Mf-am-Q22"/>
+                        <segue destination="cA2-p5-Gom" kind="relationship" relationship="viewControllers" id="kYe-JT-GTv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FT-vg-bN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
