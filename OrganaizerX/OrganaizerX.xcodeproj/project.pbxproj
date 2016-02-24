@@ -17,6 +17,8 @@
 		BA1B71B71C7C7E980036DA9D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71B61C7C7E980036DA9D /* FirstViewController.swift */; };
 		BA1B71F51C7C7F410036DA9D /* SecondViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71F41C7C7F410036DA9D /* SecondViewControler.swift */; };
 		BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */; };
+		BA664B641C7DAD280019F8F7 /* Think+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B621C7DAD280019F8F7 /* Think+CoreDataProperties.swift */; };
+		BA664B651C7DAD280019F8F7 /* Think.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B631C7DAD280019F8F7 /* Think.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		BA1B71B61C7C7E980036DA9D /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BA1B71F41C7C7F410036DA9D /* SecondViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewControler.swift; sourceTree = "<group>"; };
 		BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		BA664B621C7DAD280019F8F7 /* Think+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Think+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BA664B631C7DAD280019F8F7 /* Think.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Think.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 		BA1B71761C7C7AD60036DA9D = {
 			isa = PBXGroup;
 			children = (
+				BA664B621C7DAD280019F8F7 /* Think+CoreDataProperties.swift */,
+				BA664B631C7DAD280019F8F7 /* Think.swift */,
 				BA1B71811C7C7AD60036DA9D /* OrganaizerX */,
 				BA1B71991C7C7AD60036DA9D /* OrganaizerXTests */,
 				BA1B71A41C7C7AD60036DA9D /* OrganaizerXUITests */,
@@ -293,6 +299,8 @@
 				BA1B71F51C7C7F410036DA9D /* SecondViewControler.swift in Sources */,
 				BA1B71831C7C7AD60036DA9D /* AppDelegate.swift in Sources */,
 				BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */,
+				BA664B641C7DAD280019F8F7 /* Think+CoreDataProperties.swift in Sources */,
+				BA664B651C7DAD280019F8F7 /* Think.swift in Sources */,
 				BA1B71B71C7C7E980036DA9D /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

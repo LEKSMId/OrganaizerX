@@ -88,14 +88,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </imageView>
                             <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wk5-oB-1cg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wk5-oB-1cg" firstAttribute="leading" secondItem="Gkp-BV-38l" secondAttribute="leading" id="4Nv-ue-6Tt"/>
-                            <constraint firstItem="wk5-oB-1cg" firstAttribute="top" secondItem="Eiu-Of-Fa5" secondAttribute="bottom" constant="-64" id="I0g-zF-YFG"/>
+                            <constraint firstItem="wk5-oB-1cg" firstAttribute="top" secondItem="Eiu-Of-Fa5" secondAttribute="bottom" id="I0g-zF-YFG"/>
                             <constraint firstItem="wk5-oB-1cg" firstAttribute="bottom" secondItem="seS-is-8pZ" secondAttribute="top" id="cnc-7K-SKs"/>
                             <constraint firstAttribute="trailing" secondItem="wk5-oB-1cg" secondAttribute="trailing" id="nRr-bJ-ioY"/>
                         </constraints>
@@ -108,6 +108,9 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bhc-Mv-Fbz"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="wk5-oB-1cg" id="9pT-IH-boS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6O-ds-xr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
