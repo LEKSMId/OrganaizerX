@@ -17,8 +17,8 @@
 		BA1B71B71C7C7E980036DA9D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71B61C7C7E980036DA9D /* FirstViewController.swift */; };
 		BA1B71F51C7C7F410036DA9D /* SecondViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71F41C7C7F410036DA9D /* SecondViewControler.swift */; };
 		BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */; };
-		BA664B641C7DAD280019F8F7 /* Think+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B621C7DAD280019F8F7 /* Think+CoreDataProperties.swift */; };
-		BA664B651C7DAD280019F8F7 /* Think.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B631C7DAD280019F8F7 /* Think.swift */; };
+		BA664B6C1C7DC7340019F8F7 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B6A1C7DC7340019F8F7 /* Item+CoreDataProperties.swift */; };
+		BA664B6D1C7DC7340019F8F7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B6B1C7DC7340019F8F7 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +55,8 @@
 		BA1B71B61C7C7E980036DA9D /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BA1B71F41C7C7F410036DA9D /* SecondViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewControler.swift; sourceTree = "<group>"; };
 		BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
-		BA664B621C7DAD280019F8F7 /* Think+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Think+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BA664B631C7DAD280019F8F7 /* Think.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Think.swift; sourceTree = "<group>"; };
+		BA664B6A1C7DC7340019F8F7 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BA664B6B1C7DC7340019F8F7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +87,6 @@
 		BA1B71761C7C7AD60036DA9D = {
 			isa = PBXGroup;
 			children = (
-				BA664B621C7DAD280019F8F7 /* Think+CoreDataProperties.swift */,
-				BA664B631C7DAD280019F8F7 /* Think.swift */,
 				BA1B71811C7C7AD60036DA9D /* OrganaizerX */,
 				BA1B71991C7C7AD60036DA9D /* OrganaizerXTests */,
 				BA1B71A41C7C7AD60036DA9D /* OrganaizerXUITests */,
@@ -113,6 +111,8 @@
 				BA1B71B41C7C7B020036DA9D /* View */,
 				BA1B71B31C7C7AF70036DA9D /* Model */,
 				BA1B71821C7C7AD60036DA9D /* AppDelegate.swift */,
+				BA664B6A1C7DC7340019F8F7 /* Item+CoreDataProperties.swift */,
+				BA664B6B1C7DC7340019F8F7 /* Item.swift */,
 				BA1B71861C7C7AD60036DA9D /* Main.storyboard */,
 				BA1B718C1C7C7AD60036DA9D /* Assets.xcassets */,
 				BA1B718E1C7C7AD60036DA9D /* LaunchScreen.storyboard */,
@@ -295,12 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA664B6C1C7DC7340019F8F7 /* Item+CoreDataProperties.swift in Sources */,
 				BA1B718B1C7C7AD60036DA9D /* OrganaizerX.xcdatamodeld in Sources */,
 				BA1B71F51C7C7F410036DA9D /* SecondViewControler.swift in Sources */,
 				BA1B71831C7C7AD60036DA9D /* AppDelegate.swift in Sources */,
+				BA664B6D1C7DC7340019F8F7 /* Item.swift in Sources */,
 				BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */,
-				BA664B641C7DAD280019F8F7 /* Think+CoreDataProperties.swift in Sources */,
-				BA664B651C7DAD280019F8F7 /* Think.swift in Sources */,
 				BA1B71B71C7C7E980036DA9D /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

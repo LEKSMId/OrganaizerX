@@ -14,6 +14,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
+    var items : [Item] = []
+    
+    var iField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -28,14 +32,73 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let call = UITableViewCell()
-        call.textLabel!.text = "This is fun"
+        let item = self.items[indexPath.row]
+        call.textLabel!.text = item.title
         return call
     }
+    
+    @IBAction func addButtomPress (sender: AnyObject) {
+        alertPoppup()
+    }
+    
+    func conficurationTextField(textField: UITextField) {
+        textField.placeholder = "Enter new Item"
+        self.iField = textField
+    }
+    
+    func saveNewItem() {
+        print("Item saved")
+        
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as! Item
+        
+        item.title = iField.text
+        
+        do {
+           try context.save()
+        } catch _ {
+        }
+    
+        let request = NSFetchRequest(entityName: "Item")
+        var result : [AnyObject]?
+        
+        do {
+            result = try context.executeFetchRequest(request)
+        } catch _ {
+            result = nil
+        }
+
+        if result != nil {
+            self.items = result as! [Item]
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func alertPoppup() {
+        let alert = UIAlertController(title: "Add new item", message: nil, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                self.saveNewItem()
+        }
+            alert.addTextFieldWithConfigurationHandler (conficurationTextField)
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    
+        }
     
 }
 

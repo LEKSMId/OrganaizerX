@@ -1,5 +1,5 @@
 //
-//  Think.swift
+//  Item.swift
 //  OrganaizerX
 //
 //  Created by Alex on 2/24/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Think: NSManagedObject {
+class Item: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

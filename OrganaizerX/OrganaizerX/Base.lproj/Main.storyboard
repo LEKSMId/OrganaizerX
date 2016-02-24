@@ -105,7 +105,11 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="List my think" id="HpY-9p-Rc2">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="0mJ-WD-d3r"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bhc-Mv-Fbz"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bhc-Mv-Fbz">
+                            <connections>
+                                <action selector="addButtomPress:" destination="inX-Mw-hiS" id="sPV-Ks-Ofr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

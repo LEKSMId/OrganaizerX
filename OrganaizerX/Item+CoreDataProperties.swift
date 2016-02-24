@@ -1,5 +1,5 @@
 //
-//  Think+CoreDataProperties.swift
+//  Item+CoreDataProperties.swift
 //  OrganaizerX
 //
 //  Created by Alex on 2/24/16.
@@ -12,9 +12,8 @@
 import Foundation
 import CoreData
 
-extension Think {
+extension Item {
 
-    @NSManaged var time: NSDate?
     @NSManaged var title: String?
 
 }
