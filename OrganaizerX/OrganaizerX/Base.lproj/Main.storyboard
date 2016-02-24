@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Third View Controller-->
+        <!--Birthday list-->
         <scene sceneID="Bwr-oc-gWB">
             <objects>
                 <viewController id="cA2-p5-Gom" customClass="ThirdViewController" customModule="OrganaizerX" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,10 +20,30 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="12707-NP09TT" translatesAutoresizingMaskIntoConstraints="NO" id="2ce-n6-XpH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R7p-r4-eDS">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="R7p-r4-eDS" secondAttribute="trailing" id="IbL-iH-BC9"/>
+                            <constraint firstItem="kyk-bD-pqT" firstAttribute="top" secondItem="R7p-r4-eDS" secondAttribute="bottom" id="dfh-Un-WEy"/>
+                            <constraint firstItem="R7p-r4-eDS" firstAttribute="leading" secondItem="bew-Ev-lWm" secondAttribute="leading" id="nOp-60-kUE"/>
+                            <constraint firstItem="R7p-r4-eDS" firstAttribute="top" secondItem="6Rm-sD-zDK" secondAttribute="bottom" id="x8o-wI-wMj"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="clock" id="U5V-RA-Lfr"/>
+                    <navigationItem key="navigationItem" title="Birthday list" id="pcb-dt-xrW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zoe-4P-NCQ">
+                            <connections>
+                                <action selector="addButtomPress:" destination="cA2-p5-Gom" id="xQH-uU-DAd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="birthdayView" destination="R7p-r4-eDS" id="jeE-VM-6hx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fld-zc-2XU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,6 +140,23 @@
             </objects>
             <point key="canvasLocation" x="1510" y="-71"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="BnI-5y-taF">
+            <objects>
+                <navigationController id="xpk-Wt-Llo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Vrf-3v-rQO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="avL-QY-QZS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cA2-p5-Gom" kind="relationship" relationship="rootViewController" id="5II-DR-0Z3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZg-2v-HL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="784" y="668"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="G4s-gk-4YD">
             <objects>
@@ -132,7 +169,7 @@
                     <connections>
                         <segue destination="45j-mM-FoA" kind="relationship" relationship="viewControllers" id="8BK-mK-WCM"/>
                         <segue destination="06D-Z7-B8j" kind="relationship" relationship="viewControllers" id="6Mf-am-Q22"/>
-                        <segue destination="cA2-p5-Gom" kind="relationship" relationship="viewControllers" id="kYe-JT-GTv"/>
+                        <segue destination="xpk-Wt-Llo" kind="relationship" relationship="viewControllers" id="D0F-em-aAo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FT-vg-bN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
