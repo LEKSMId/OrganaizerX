@@ -23,6 +23,22 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Item")
+        var result : [AnyObject]?
+        
+        do {
+            result = try context.executeFetchRequest(request)
+        } catch _ {
+            result = nil
+        }
+        
+        if result != nil {
+            self.items = result as! [Item]
+        }
+        
+        self.tableView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
