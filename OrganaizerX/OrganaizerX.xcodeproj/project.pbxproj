@@ -19,7 +19,6 @@
 		BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */; };
 		BA664B6C1C7DC7340019F8F7 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B6A1C7DC7340019F8F7 /* Item+CoreDataProperties.swift */; };
 		BA664B6D1C7DC7340019F8F7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B6B1C7DC7340019F8F7 /* Item.swift */; };
-		BA664B6F1C7DDB450019F8F7 /* calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B6E1C7DDB450019F8F7 /* calendar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +57,6 @@
 		BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		BA664B6A1C7DC7340019F8F7 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA664B6B1C7DC7340019F8F7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
-		BA664B6E1C7DDB450019F8F7 /* calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +141,6 @@
 		BA1B71B31C7C7AF70036DA9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BA664B6E1C7DDB450019F8F7 /* calendar.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 				BA664B6C1C7DC7340019F8F7 /* Item+CoreDataProperties.swift in Sources */,
 				BA1B718B1C7C7AD60036DA9D /* OrganaizerX.xcdatamodeld in Sources */,
 				BA1B71F51C7C7F410036DA9D /* SecondViewControler.swift in Sources */,
-				BA664B6F1C7DDB450019F8F7 /* calendar.swift in Sources */,
 				BA1B71831C7C7AD60036DA9D /* AppDelegate.swift in Sources */,
 				BA664B6D1C7DC7340019F8F7 /* Item.swift in Sources */,
 				BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */,
