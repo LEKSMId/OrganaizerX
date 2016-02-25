@@ -10,12 +10,13 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    @IBOutlet weak var picker: UIDatePicker!
+    @IBOutlet weak var pickerDate: UIDatePicker!
+    @IBOutlet weak var pickerDateTime: UIDatePicker!
+    
     @IBOutlet weak var titleEvent: UITextField!
     @IBOutlet weak var switcher: UISegmentedControl!
+    
     let dateFormatter = NSDateFormatter()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +27,31 @@ class SecondViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func setDateAndTime() {
         var prDate: String
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        prDate = dateFormatter.stringFromDate(picker.date)
-        print("\(prDate)")
+        if pickerDateTime.hidden == true {
+            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            prDate = dateFormatter.stringFromDate(pickerDate.date)
+            print("\(prDate)")
+        } else {
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            prDate = dateFormatter.stringFromDate(pickerDateTime.date)
+            print("\(prDate)")
+
+        }
     }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch switcher.selectedSegmentIndex {
         case 0:
-            picker.hidden = true
-//            popularView.hidden = false
+            pickerDate.hidden = true
+            pickerDateTime.hidden = false
         case 1:
-            picker.hidden = false
-//            popularView.hidden = true
+            pickerDate.hidden = false
+            pickerDateTime.hidden = true
         default:
             break;
         }
@@ -51,3 +62,4 @@ class SecondViewController: UIViewController {
     }
 }
 
+//

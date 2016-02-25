@@ -189,6 +189,22 @@
                                 <rect key="frame" x="277" y="378" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
+                                <rect key="frame" x="20" y="72" width="560" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="0KQ-zQ-zDh"/>
+                                    <constraint firstAttribute="height" constant="130" id="tE7-4Q-UV4"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="478082940.51660502">
+                                    <!--2016-02-25 08:49:00 +0000-->
+                                </date>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tE7-4Q-UV4"/>
+                                        <exclude reference="0KQ-zQ-zDh"/>
+                                    </mask>
+                                </variation>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -196,12 +212,15 @@
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="1cb-Qc-3S3"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="top" secondItem="QbT-kz-uEy" secondAttribute="bottom" constant="18" id="49w-BR-oCO"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" constant="50" id="4Ef-QX-bun"/>
+                            <constraint firstItem="vXk-HD-FL2" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="4RT-nO-09Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FUZ-nT-NDb" secondAttribute="trailing" id="59F-IA-m1e"/>
                             <constraint firstItem="YRt-KE-jSh" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="G0n-ev-4hP"/>
                             <constraint firstItem="QbT-kz-uEy" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="Jvh-qJ-66P"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="KjM-Q3-k2g"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="URF-gM-gde"/>
+                            <constraint firstItem="vXk-HD-FL2" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="Znj-6N-2Sx"/>
                             <constraint firstItem="YRt-KE-jSh" firstAttribute="top" secondItem="Rw2-Fx-Jbz" secondAttribute="bottom" constant="22" id="aMl-mj-xH0"/>
+                            <constraint firstItem="vXk-HD-FL2" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="fBw-Wm-85b"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="g1c-ss-tgZ"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="g9f-K3-hid"/>
                             <constraint firstItem="Rw2-Fx-Jbz" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="gwy-sp-Z8b"/>
@@ -222,7 +241,8 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="picker" destination="FUZ-nT-NDb" id="T7a-cT-6Xd"/>
+                        <outlet property="pickerDate" destination="FUZ-nT-NDb" id="hxV-8j-O7X"/>
+                        <outlet property="pickerDateTime" destination="vXk-HD-FL2" id="eZd-Os-gTj"/>
                         <outlet property="switcher" destination="Rw2-Fx-Jbz" id="z5u-Dc-PxG"/>
                         <outlet property="titleEvent" destination="EPI-eF-CNJ" id="Sak-wS-BGl"/>
                     </connections>
