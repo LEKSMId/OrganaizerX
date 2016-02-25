@@ -12,18 +12,21 @@ import CoreData
 
 class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var birthdayView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var birthdays : [Birthday] = []
     
-    var tField: UITextField!
+    var nField: UITextField!
+//    var dField: UITextField!
+//    var fField: UITextField!
+
     
     var savedEventId : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.birthdayView.dataSource = self
-        self.birthdayView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         
@@ -40,7 +43,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.birthdays = result as! [Birthday]
         }
         
-        self.birthdayView.reloadData()
+        self.tableView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
 
         
@@ -53,26 +56,35 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func birthdayView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.birthdays.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let call = UITableViewCell()
+    func birthdayView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
         let birthday = self.birthdays[indexPath.row]
-        call.textLabel!.text = birthday.name
-        return call
+        cell.textLabel!.text = birthday.name
+        return cell
     }
     
     @IBAction func addButtomPress (sender: AnyObject) {
         alertPoppup()
     }
     
-    func conficurationTextField(textField: UITextField) {
-        textField.placeholder = "Enter new Item"
-        self.tField = textField
-    }
+//    func dateTextField(dateField: UITextField) {
+//        dateField.placeholder = "Enter new Item"
+//        self.dField = dateField
+//    }
+//    
+//    func firstNameTextField(firstField: UITextField) {
+//        firstField.placeholder = "Enter new Item"
+//        self.fField = firstField
+//    }
     
+    func nameTextField(textField: UITextField) {
+        textField.placeholder = "Enter new Item"
+        self.nField = textField
+    }
     func saveNewItem() {
         print("Item saved")
         
@@ -80,7 +92,9 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let birthday = NSEntityDescription.insertNewObjectForEntityForName("Birthday", inManagedObjectContext: context) as! Birthday
         
-        birthday.name = tField.text
+        birthday.name = nField.text
+//        birthday.datebirthday = dField.text
+//        birthday.firthname = fField.text
         
         do {
             try context.save()
@@ -100,7 +114,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.birthdays = result as! [Birthday]
         }
         
-        self.birthdayView.reloadData()
+        self.tableView.reloadData()
     }
     
     func alertPoppup() {
@@ -115,7 +129,10 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
             UIAlertAction in
             self.saveNewItem()
         }
-        alert.addTextFieldWithConfigurationHandler (conficurationTextField)
+        
+//        alert.addTextFieldWithConfigurationHandler (firstNameTextField)
+        alert.addTextFieldWithConfigurationHandler (nameTextField)
+//        alert.addTextFieldWithConfigurationHandler (dateTextField)
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
         self.presentViewController(alert, animated: true, completion: nil)

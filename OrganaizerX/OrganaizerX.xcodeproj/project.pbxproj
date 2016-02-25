@@ -16,7 +16,6 @@
 		BA1B71A61C7C7AD60036DA9D /* OrganaizerXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71A51C7C7AD60036DA9D /* OrganaizerXUITests.swift */; };
 		BA1B71B71C7C7E980036DA9D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71B61C7C7E980036DA9D /* FirstViewController.swift */; };
 		BA1B71F51C7C7F410036DA9D /* SecondViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71F41C7C7F410036DA9D /* SecondViewControler.swift */; };
-		BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */; };
 		BA664B6C1C7DC7340019F8F7 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B6A1C7DC7340019F8F7 /* Item+CoreDataProperties.swift */; };
 		BA664B6D1C7DC7340019F8F7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B6B1C7DC7340019F8F7 /* Item.swift */; };
 		BA664B721C7DF0F60019F8F7 /* Birthday+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA664B701C7DF0F60019F8F7 /* Birthday+CoreDataProperties.swift */; };
@@ -56,7 +55,6 @@
 		BA1B71A71C7C7AD60036DA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA1B71B61C7C7E980036DA9D /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BA1B71F41C7C7F410036DA9D /* SecondViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewControler.swift; sourceTree = "<group>"; };
-		BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		BA664B6A1C7DC7340019F8F7 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA664B6B1C7DC7340019F8F7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 		BA664B701C7DF0F60019F8F7 /* Birthday+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Birthday+CoreDataProperties.swift"; path = "../Birthday+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 		BA1B71B51C7C7B110036DA9D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BA1B71F61C7C7F6A0036DA9D /* ThirdViewController.swift */,
 				BA664B701C7DF0F60019F8F7 /* Birthday+CoreDataProperties.swift */,
 				BA664B711C7DF0F60019F8F7 /* Birthday.swift */,
 				BA1B71B61C7C7E980036DA9D /* FirstViewController.swift */,
@@ -307,7 +304,6 @@
 				BA1B71F51C7C7F410036DA9D /* SecondViewControler.swift in Sources */,
 				BA1B71831C7C7AD60036DA9D /* AppDelegate.swift in Sources */,
 				BA664B6D1C7DC7340019F8F7 /* Item.swift in Sources */,
-				BA1B71F71C7C7F6A0036DA9D /* ThirdViewController.swift in Sources */,
 				BA1B71B71C7C7E980036DA9D /* FirstViewController.swift in Sources */,
 				BA664B731C7DF0F60019F8F7 /* Birthday.swift in Sources */,
 			);

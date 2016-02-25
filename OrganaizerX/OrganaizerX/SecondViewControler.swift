@@ -10,6 +10,12 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
+    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var titleEvent: UITextField!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +26,8 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    @IBAction func saveEvent(sender: AnyObject) {
+        
+    }
 }
 
