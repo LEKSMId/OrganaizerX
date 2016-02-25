@@ -10,7 +10,7 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var picker: UIDatePicker!
     @IBOutlet weak var titleEvent: UITextField!
     
     
