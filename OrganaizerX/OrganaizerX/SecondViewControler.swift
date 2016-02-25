@@ -12,7 +12,8 @@ class SecondViewController: UIViewController {
     
     @IBOutlet weak var picker: UIDatePicker!
     @IBOutlet weak var titleEvent: UITextField!
-    
+    @IBOutlet weak var switcher: UISegmentedControl!
+    let dateFormatter = NSDateFormatter()
     
     
     
@@ -25,9 +26,28 @@ class SecondViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func setDateAndTime() {
+        var prDate: String
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        prDate = dateFormatter.stringFromDate(picker.date)
+        print("\(prDate)")
+    }
+    
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch switcher.selectedSegmentIndex {
+        case 0:
+            picker.hidden = true
+//            popularView.hidden = false
+        case 1:
+            picker.hidden = false
+//            popularView.hidden = true
+        default:
+            break;
+        }
+    }
     
     @IBAction func saveEvent(sender: AnyObject) {
-        
+    setDateAndTime()
     }
 }
 

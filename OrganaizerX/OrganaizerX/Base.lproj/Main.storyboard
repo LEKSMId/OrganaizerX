@@ -166,6 +166,9 @@
                                     <segment title="Birthday"/>
                                     <segment title="Meeting"/>
                                 </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="5gP-pu-Jz2" eventType="valueChanged" id="89t-J0-hzF"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbT-kz-uEy">
                                 <rect key="frame" x="283" y="210" width="34" height="21"/>
@@ -220,6 +223,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="picker" destination="FUZ-nT-NDb" id="T7a-cT-6Xd"/>
+                        <outlet property="switcher" destination="Rw2-Fx-Jbz" id="z5u-Dc-PxG"/>
                         <outlet property="titleEvent" destination="EPI-eF-CNJ" id="Sak-wS-BGl"/>
                     </connections>
                 </viewController>
