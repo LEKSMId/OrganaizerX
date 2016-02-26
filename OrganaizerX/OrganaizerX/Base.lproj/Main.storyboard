@@ -79,7 +79,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker hidden="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FUZ-nT-NDb">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FUZ-nT-NDb">
                                 <rect key="frame" x="20" y="72" width="560" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="YmO-9y-fVI"/>
@@ -128,7 +128,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
+                            <datePicker hidden="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
                                 <rect key="frame" x="20" y="0.0" width="560" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="0KQ-zQ-zDh"/>
@@ -144,6 +144,11 @@
                                     </mask>
                                 </variation>
                             </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4T-js-RVi">
+                                <rect key="frame" x="252" y="287" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -156,9 +161,12 @@
                             <constraint firstItem="YRt-KE-jSh" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="G0n-ev-4hP"/>
                             <constraint firstItem="QbT-kz-uEy" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="Jvh-qJ-66P"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="KjM-Q3-k2g"/>
+                            <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leading" constant="8" id="SCu-9k-ynh"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="URF-gM-gde"/>
+                            <constraint firstAttribute="trailing" secondItem="f4T-js-RVi" secondAttribute="trailing" constant="8" id="VCk-YG-s9b"/>
                             <constraint firstItem="vXk-HD-FL2" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="Znj-6N-2Sx"/>
                             <constraint firstItem="YRt-KE-jSh" firstAttribute="top" secondItem="Rw2-Fx-Jbz" secondAttribute="bottom" constant="22" id="aMl-mj-xH0"/>
+                            <constraint firstItem="f4T-js-RVi" firstAttribute="top" secondItem="EPI-eF-CNJ" secondAttribute="bottom" constant="8" id="cLx-RL-Bf8"/>
                             <constraint firstItem="vXk-HD-FL2" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="fBw-Wm-85b"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="g1c-ss-tgZ"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="g9f-K3-hid"/>
@@ -180,6 +188,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="noteField" destination="f4T-js-RVi" id="nSi-v8-vCn"/>
                         <outlet property="pickerDate" destination="FUZ-nT-NDb" id="1Nw-zb-d2d"/>
                         <outlet property="pickerDateTime" destination="vXk-HD-FL2" id="U6f-29-gpZ"/>
                         <outlet property="switcher" destination="Rw2-Fx-Jbz" id="wB2-Ne-hBz"/>

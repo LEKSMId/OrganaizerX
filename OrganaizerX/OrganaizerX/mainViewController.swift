@@ -20,6 +20,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var pickerDateTime: UIDatePicker!
     
     @IBOutlet weak var titleEvent: UITextField!
+    @IBOutlet weak var noteField: UITextField!
     @IBOutlet weak var switcher: UISegmentedControl!
     
     let dateFormatter = NSDateFormatter()
@@ -114,7 +115,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            prDate = dateFormatter.stringFromDate(pickerDateTime.date)
 //            print("\(prDate)")
 //            
-//        }
+//        }qsd
 //    }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
@@ -134,33 +135,50 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let eventStore = EKEventStore()
         let nameEvent = titleEvent.text! as String
-
-        let startDate = NSDate()
-        let endDate = startDate.dateByAddingTimeInterval(60 * 60) // One hour
-
-        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-            eventStore.requestAccessToEntityType(.Event, completion: {
-                granted, error in
-                self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate)
-            })
+        let noteEvent = noteField.text! as String
+        if switcher.selectedSegmentIndex == 0 {
+        
+            let startDate = pickerDate.date
+            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60) // One day
+            
+            if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+                eventStore.requestAccessToEntityType(.Event, completion: {
+                    granted, error in
+                    self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+                })
+            } else {
+                createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+            }
         } else {
-            createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate)
-        }
+    
+            let startDate = pickerDateTime.date
+            
+            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60)
+                    
+            if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+            eventStore.requestAccessToEntityType(.Event, completion: {
+            granted, error in
+                self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+            })
+            } else {
+                createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+            }
+            
 
+        }
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
-//        setDateAndTime()
         sendEventInfo()
-        //saveNewItem()
     }
     
     var savedEventId : String = ""
     
-    func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate) {
+    func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String) {
         let event = EKEvent(eventStore: eventStore)
         
         event.title = title
+        event.notes = note
         event.startDate = startDate
         event.endDate = endDate
         event.calendar = eventStore.defaultCalendarForNewEvents
@@ -172,9 +190,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // Removes an event from the EKEventStore. The method assumes the eventStore is created and
-    // accessible
-    
     func deleteEvent(eventStore: EKEventStore, eventIdentifier: String) {
         let eventToRemove = eventStore.eventWithIdentifier(eventIdentifier)
         if (eventToRemove != nil) {
@@ -183,37 +198,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             } catch {
                 print("Bad things happened")
             }
-        }
-    }
-    
-//    @IBAction func addEvent(sender: UIButton) {
-//        let eventStore = EKEventStore()
-//    
-//        let startDate = NSDate()
-//        let endDate = startDate.dateByAddingTimeInterval(60 * 60) // One hour
-//    
-//        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-//            eventStore.requestAccessToEntityType(.Event, completion: {
-//                granted, error in
-//                self.createEvent(eventStore, title: "DJ's Test Event", startDate: startDate, endDate: endDate)
-//            })
-//        } else {
-//            createEvent(eventStore, title: "DJ's Test Event", startDate: startDate, endDate: endDate)
-//        }
-//    }
-    
-    
-    // Responds to button to remove event. This checks that we have permission first, before removing the
-    // event
-    @IBAction func removeEvent(sender: UIButton) {
-        let eventStore = EKEventStore()
-    
-        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-            eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) -> Void in
-                self.deleteEvent(eventStore, eventIdentifier: self.savedEventId)
-            })
-        } else {
-            deleteEvent(eventStore, eventIdentifier: savedEventId)
         }
     }
 }
