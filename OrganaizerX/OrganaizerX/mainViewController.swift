@@ -138,8 +138,8 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let noteEvent = noteField.text! as String
         if switcher.selectedSegmentIndex == 0 {
         
-            let startDate = pickerDate.date
-            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60) // One day
+            let startDate = NSDateComponents()
+            let endDate = NSDateComponents()
             
             if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
                 eventStore.requestAccessToEntityType(.Event, completion: {
@@ -149,23 +149,23 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
             }
-        } else {
-    
-            let startDate = pickerDateTime.date
-            
-            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60)
-                    
-            if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-            eventStore.requestAccessToEntityType(.Event, completion: {
-            granted, error in
-                self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
-            })
-            } else {
-                createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
-            }
-            
+        } //else {
+//            
+//            let startDate = pickerDateTime.
+//            
+//            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60)
+//                    
+//            if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+//            eventStore.requestAccessToEntityType(.Event, completion: {
+//            granted, error in
+//                self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+//            })
+//            } else {
+//                createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+//            }
+//            
 
-        }
+//        }
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
@@ -176,7 +176,15 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String) {
         let event = EKEvent(eventStore: eventStore)
-        
+//        let firstSaturdayMarch2015DateComponents = NSDateComponents()
+//        firstSaturdayMarch2015DateComponents.year = 2015
+//        firstSaturdayMarch2015DateComponents.month = 3
+//        firstSaturdayMarch2015DateComponents.weekday = 7
+//        firstSaturdayMarch2015DateComponents.weekdayOrdinal = 1
+//        firstSaturdayMarch2015DateComponents.hour = 11
+//        firstSaturdayMarch2015DateComponents.minute = 0
+//        firstSaturdayMarch2015DateComponents.timeZone = NSTimeZone(name: "US/Eastern")
+
         event.title = title
         event.notes = note
         event.startDate = startDate
