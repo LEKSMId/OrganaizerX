@@ -16,7 +16,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var items : [Item] = []
     
-    
     @IBOutlet weak var pickerDate: UIDatePicker!
     @IBOutlet weak var pickerDateTime: UIDatePicker!
     
@@ -101,22 +100,22 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    
-    func setDateAndTime() {
-        var prDate: String
-        if pickerDateTime.hidden == true {
-            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-            prDate = dateFormatter.stringFromDate(pickerDate.date)
-            print("\(prDate)")
-        } else {
-            var dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-            dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-            prDate = dateFormatter.stringFromDate(pickerDateTime.date)
-            print("\(prDate)")
-            
-        }
-    }
+//    
+//    func setDateAndTime() {
+//        var prDate: String
+//        if pickerDateTime.hidden == true {
+//            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+//            prDate = dateFormatter.stringFromDate(pickerDate.date)
+//            print("\(prDate)")
+//        } else {
+//            var dateFormatter = NSDateFormatter()
+//            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+//            dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+//            prDate = dateFormatter.stringFromDate(pickerDateTime.date)
+//            print("\(prDate)")
+//            
+//        }
+//    }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch switcher.selectedSegmentIndex {
@@ -131,24 +130,28 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    @IBAction func saveEvent(sender: AnyObject) {
-        setDateAndTime()
+    func sendEventInfo(){
         
         let eventStore = EKEventStore()
-        
+        let nameEvent = titleEvent.text! as String
+
         let startDate = NSDate()
-        
         let endDate = startDate.dateByAddingTimeInterval(60 * 60) // One hour
-        
+
         if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
             eventStore.requestAccessToEntityType(.Event, completion: {
                 granted, error in
-                self.createEvent(eventStore, title: "DJ's Test Event", startDate: startDate, endDate: endDate)
+                self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate)
             })
         } else {
-            createEvent(eventStore, title: "DJ's Test Event", startDate: startDate, endDate: endDate)
+            createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate)
         }
-        
+
+    }
+    
+    @IBAction func saveEvent(sender: AnyObject) {
+//        setDateAndTime()
+        sendEventInfo()
         //saveNewItem()
     }
     
