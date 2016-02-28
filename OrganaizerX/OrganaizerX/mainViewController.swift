@@ -27,10 +27,10 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//
-//        self.tableView.dataSource = self
-//        self.tableView.delegate = self
-//        
+
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+
 //        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 //        
 //        let request = NSFetchRequest(entityName: "Item")
@@ -63,11 +63,21 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let call = UITableViewCell()
+
+            if let cell = tableView.dequeueReusableCellWithIdentifier("EventCell")
+                as? eventCell {
+                    
+                return cell
+            } else {
+                return cell
+        }
+        
+//        let call = UITableViewCell()
 //        let item = self.items[indexPath.row]
-        call.textLabel!.text = "test text"
+//       let call.textLabel!.text = "test text"
 //            item.title
-        return call
+        
+//        return call
     }
     
     func saveNewItem() {
@@ -99,24 +109,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        
 //        self.tableView.reloadData()
     }
-    
-    
-//    
-//    func setDateAndTime() {
-//        var prDate: String
-//        if pickerDateTime.hidden == true {
-//            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-//            prDate = dateFormatter.stringFromDate(pickerDate.date)
-//            print("\(prDate)")
-//        } else {
-//            var dateFormatter = NSDateFormatter()
-//            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-//            dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-//            prDate = dateFormatter.stringFromDate(pickerDateTime.date)
-//            print("\(prDate)")
-//            
-//        }qsd
-//    }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch switcher.selectedSegmentIndex {
@@ -177,6 +169,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String) {
         let event = EKEvent(eventStore: eventStore)
+
 //        let firstSaturdayMarch2015DateComponents = NSDateComponents()
 //        firstSaturdayMarch2015DateComponents.year = 2015
 //        firstSaturdayMarch2015DateComponents.month = 3
@@ -209,4 +202,5 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
+    
 }
