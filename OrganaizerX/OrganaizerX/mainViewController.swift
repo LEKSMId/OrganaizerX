@@ -138,11 +138,12 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let noteEvent = noteField.text! as String
         if switcher.selectedSegmentIndex == 0 {
         
-            let startDate = NSDateComponents()
-            let endDate = NSDateComponents()
+            let startDate = pickerDate.date
+            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60)
             
             if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
                 eventStore.requestAccessToEntityType(.Event, completion: {
+                    
                     granted, error in
                     self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
                 })
