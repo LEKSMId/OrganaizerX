@@ -15,8 +15,8 @@
 		BA1B719B1C7C7AD60036DA9D /* OrganaizerXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B719A1C7C7AD60036DA9D /* OrganaizerXTests.swift */; };
 		BA1B71A61C7C7AD60036DA9D /* OrganaizerXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B71A51C7C7AD60036DA9D /* OrganaizerXUITests.swift */; };
 		BAD1D0E11C82FA830089AE37 /* eventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D0E01C82FA830089AE37 /* eventCell.swift */; };
-		BAF9976E1C7F500200BC919F /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9976C1C7F500200BC919F /* Item+CoreDataProperties.swift */; };
-		BAF9976F1C7F500200BC919F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9976D1C7F500200BC919F /* Item.swift */; };
+		BAD1D0E61C831D5E0089AE37 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D0E41C831D5E0089AE37 /* Item+CoreDataProperties.swift */; };
+		BAD1D0E71C831D5E0089AE37 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D0E51C831D5E0089AE37 /* Item.swift */; };
 		BAF997711C7F571900BC919F /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF997701C7F571900BC919F /* mainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +52,8 @@
 		BA1B71A51C7C7AD60036DA9D /* OrganaizerXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganaizerXUITests.swift; sourceTree = "<group>"; };
 		BA1B71A71C7C7AD60036DA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAD1D0E01C82FA830089AE37 /* eventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventCell.swift; sourceTree = "<group>"; };
-		BAF9976C1C7F500200BC919F /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BAF9976D1C7F500200BC919F /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
+		BAD1D0E41C831D5E0089AE37 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BAD1D0E51C831D5E0089AE37 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 		BAF997701C7F571900BC919F /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,8 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				BAF997701C7F571900BC919F /* mainViewController.swift */,
-				BAF9976C1C7F500200BC919F /* Item+CoreDataProperties.swift */,
-				BAF9976D1C7F500200BC919F /* Item.swift */,
+				BAD1D0E41C831D5E0089AE37 /* Item+CoreDataProperties.swift */,
+				BAD1D0E51C831D5E0089AE37 /* Item.swift */,
 				BAD1D0E01C82FA830089AE37 /* eventCell.swift */,
 			);
 			name = Controller;
@@ -296,8 +296,8 @@
 				BAF997711C7F571900BC919F /* mainViewController.swift in Sources */,
 				BAD1D0E11C82FA830089AE37 /* eventCell.swift in Sources */,
 				BA1B71831C7C7AD60036DA9D /* AppDelegate.swift in Sources */,
-				BAF9976F1C7F500200BC919F /* Item.swift in Sources */,
-				BAF9976E1C7F500200BC919F /* Item+CoreDataProperties.swift in Sources */,
+				BAD1D0E71C831D5E0089AE37 /* Item.swift in Sources */,
+				BAD1D0E61C831D5E0089AE37 /* Item+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

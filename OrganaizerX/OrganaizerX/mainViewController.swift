@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import CoreData
 import EventKit
+import CoreData
 
 class mainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,91 +23,78 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var noteField: UITextField!
     @IBOutlet weak var switcher: UISegmentedControl!
     
-    let dateFormatter = NSDateFormatter()
+//    let dateFormatter = NSDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if tableView != nil {
         self.tableView.dataSource = self
         self.tableView.delegate = self
-
-//        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-//        
-//        let request = NSFetchRequest(entityName: "Item")
-//        var result : [AnyObject]?
-//        
-//        do {
-//            result = try context.executeFetchRequest(request)
-//        } catch _ {
-//            result = nil
-//        }
-//        
-//        if result != nil {
-//            self.items = result as! [Item]
-//        }
-//        
-//        self.tableView.reloadData()
-//        
+            
+            let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Item")
+            var result : [AnyObject]?
+            
+            do {
+                result = try context.executeFetchRequest(request)
+            } catch _ {
+                result = nil
+            }
+            
+            if result != nil {
+                self.items = result as! [Item]
+            }
+            
+            self.tableView.reloadData()
+        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-//            self.items.count
+//        return 5
+          return self.items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-            if let cell = tableView.dequeueReusableCellWithIdentifier("EventCell")
-                as? eventCell {
-                    
-                return cell
-            } else {
-                return cell
-        }
-        
-//        let call = UITableViewCell()
-//        let item = self.items[indexPath.row]
-//       let call.textLabel!.text = "test text"
-//            item.title
-        
-//        return call
+        let call = UITableViewCell()
+        let item = self.items[indexPath.row]
+        call.textLabel!.text = item.title
+        return call
     }
     
     func saveNewItem() {
         print("Item saved")
         
-//        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-//        
-//        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as! Item
-//        
-//        item.title = titleEvent.text
-//        
-//        do {
-//            try context.save()
-//        } catch _ {
-//        }
-//        
-//        let request = NSFetchRequest(entityName: "Item")
-//        var result : [AnyObject]?
-//        
-//        do {
-//            result = try context.executeFetchRequest(request)
-//        } catch _ {
-//            result = nil
-//        }
-//        
-//        if result != nil {
-//            self.items = result as! [Item]
-//        }
-//        
-//        self.tableView.reloadData()
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as! Item
+        
+        item.title = titleEvent.text
+        item.date = pickerDate.date
+        item.imageid = switcher.selectedSegmentIndex + 1
+        
+        
+        do {
+            try context.save()
+        } catch _ {
+        }
+        
+        let request = NSFetchRequest(entityName: "Item")
+        var result : [AnyObject]?
+        
+        do {
+            result = try context.executeFetchRequest(request)
+        } catch _ {
+            result = nil
+        }
+        
+        if result != nil {
+            self.items = result as! [Item]
+        }
+        
+//        tableView.reloadData()
     }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
@@ -122,7 +109,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             break;
         }
     }
-    
     func sendEventInfo(){
         
         let eventStore = EKEventStore()
@@ -135,7 +121,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
                 eventStore.requestAccessToEntityType(.Event, completion: {
-                    
+                
                     granted, error in
                     self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
                 })
@@ -162,7 +148,9 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
-        sendEventInfo()
+//        sendEventInfo()
+        saveNewItem()
+        
     }
     
     var savedEventId : String = ""
