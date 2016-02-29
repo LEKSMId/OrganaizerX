@@ -93,7 +93,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         item.title = titleEvent.text
         item.date = pickerDate.date
-        item.imageid = switcher.selectedSegmentIndex + 1
+        item.imageid = switcher.selectedSegmentIndex
         
         
         do {
@@ -122,11 +122,11 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch switcher.selectedSegmentIndex {
         case 0:
-            pickerDate.hidden = true
-            pickerDateTime.hidden = false
-        case 1:
             pickerDate.hidden = false
             pickerDateTime.hidden = true
+        case 1:
+            pickerDate.hidden = true
+            pickerDateTime.hidden = false
         default:
             break;
         }
