@@ -15,6 +15,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     var items : [Item] = []
+    var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var pickerDate: UIDatePicker!
     @IBOutlet weak var pickerDateTime: UIDatePicker!
@@ -22,8 +23,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var titleEvent: UITextField!
     @IBOutlet weak var noteField: UITextField!
     @IBOutlet weak var switcher: UISegmentedControl!
-    
-//    let dateFormatter = NSDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +57,31 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let call = UITableViewCell()
-        let item = self.items[indexPath.row]
-        call.textLabel!.text = item.title
-        return call
+//        let call = UITableViewCell()
+      
+        
+//        let call = UITableViewController
+        if let call = tableView.dequeueReusableCellWithIdentifier("eventCell") as? eventCell{
+            let item = self.items[indexPath.row]
+//            call.textLabel!.text = item.title
+            var imag : UIImage!
+            if item.imageid == 0 {
+                imag = UIImage(named: "1")
+            } else {
+                imag = UIImage(named: "2")
+            }
+            call.configureCell(imag, text: item.title!, note: item.title!)
+            return call
+        } else {
+            return eventCell()
+        }
+//        
+//        
+//        
+//        
+//        let item = self.items[indexPath.row]
+//        call.textLabel!.text = item.title
+//        return call
     }
     
     func saveNewItem() {
@@ -93,7 +113,9 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if result != nil {
             self.items = result as! [Item]
         }
+    
         
+
 //        tableView.reloadData()
     }
     
@@ -148,9 +170,8 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
-//        sendEventInfo()
+        sendEventInfo()
         saveNewItem()
-        
     }
     
     var savedEventId : String = ""

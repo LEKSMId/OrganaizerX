@@ -12,15 +12,18 @@ class eventCell: UITableViewCell {
     
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var mainLbl: UILabel!
+    @IBOutlet weak var noteLbl: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configureCell(image: UIImage, text: String) {
+    func configureCell(image: UIImage, text: String, note: String) {
         
         mainImg.image = image
         mainLbl.text = text
+        noteLbl.text = note
         
     }
     
