@@ -56,44 +56,46 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
           return self.items.count
     }
     
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! UITableViewCell
+//        cell.textLabel?.text = data[indexPath.row]
+//        return cell
+//    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let call = UITableViewCell()
-      
-        
-//        let call = UITableViewController
+
         if let call = tableView.dequeueReusableCellWithIdentifier("eventCell") as? eventCell{
+            
             let item = self.items[indexPath.row]
-//            call.textLabel!.text = item.title
+            
             var imag : UIImage!
+            
             if item.imageid == 0 {
+                
                 imag = UIImage(named: "1")
+            
             } else {
+            
                 imag = UIImage(named: "2")
             }
-            call.configureCell(imag, text: item.title!, note: item.title!)
+            call.configureCell(imag, text: item.title!, note: item.noteEvent!)
             return call
         } else {
             return eventCell()
         }
-//        
-//        
-//        
-//        
-//        let item = self.items[indexPath.row]
-//        call.textLabel!.text = item.title
-//        return call
     }
     
     func saveNewItem() {
+        
         print("Item saved")
         
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
         let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as! Item
         
         item.title = titleEvent.text
         item.date = pickerDate.date
         item.imageid = switcher.selectedSegmentIndex
+        item.noteEvent = noteField.text
         
         
         do {
@@ -114,9 +116,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.items = result as! [Item]
         }
     
-        
-
-//        tableView.reloadData()
     }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
@@ -131,11 +130,13 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             break;
         }
     }
+    
     func sendEventInfo(){
         
         let eventStore = EKEventStore()
         let nameEvent = titleEvent.text! as String
         let noteEvent = noteField.text! as String
+    
         if switcher.selectedSegmentIndex == 0 {
         
             let startDate = pickerDate.date
@@ -170,7 +171,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
-        sendEventInfo()
+//        sendEventInfo()
         saveNewItem()
     }
     

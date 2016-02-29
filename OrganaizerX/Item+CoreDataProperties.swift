@@ -17,5 +17,6 @@ extension Item {
     @NSManaged var date: NSDate?
     @NSManaged var imageid: NSNumber?
     @NSManaged var title: String?
+    @NSManaged var noteEvent: String?
 
 }
