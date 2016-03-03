@@ -56,12 +56,15 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 5
-        
+
         if inSearchMode{
+        
             return filteredItems.count
+        
         } else {
+            
             return self.items.count
+        
         }
     }
     
@@ -76,13 +79,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
               item = filteredItems[indexPath.row]
             } else {
                 item = self.items[indexPath.row]
-            }
-            
-            
-            if inSearchMode {
-                
-            } else {
-                
             }
             
             var imag : UIImage!
@@ -105,17 +101,20 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if searchBar.text == nil || searchBar == "" {
+        if searchBar.text == nil || searchBar.text == ""{
             inSearchMode = false
-        
+            tableView.reloadData()
         } else {
-        
+            
             inSearchMode = true
             let lower = searchBar.text!.lowercaseString
             filteredItems = items.filter({$0.title?.rangeOfString(lower) != nil})
             tableView.reloadData()
     
         }
+    }
+    @IBAction func reloadUI() {
+        updateUI()
     }
     
 }
