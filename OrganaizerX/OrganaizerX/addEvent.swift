@@ -11,15 +11,18 @@ import EventKit
 import CoreData
 
 class addEvent: UIViewController {
-    
+
     var items : [Item] = []
+    var alartTime : Double = 0
     
     @IBOutlet weak var pickerDate: UIDatePicker!
     @IBOutlet weak var pickerDateTime: UIDatePicker!
     
     @IBOutlet weak var titleEvent: UITextField!
     @IBOutlet weak var noteField: UITextField!
-    @IBOutlet weak var switcher: UISegmentedControl!
+    
+    @IBOutlet weak var eventTypeSwitcher: UISegmentedControl!
+    @IBOutlet weak var alertSwitcher: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +73,7 @@ class addEvent: UIViewController {
         
         item.title = titleEvent.text
         item.date = pickerDate.date
-        item.imageid = switcher.selectedSegmentIndex
+        item.imageid = eventTypeSwitcher.selectedSegmentIndex
         item.noteEvent = noteField.text
         
         
@@ -95,7 +98,7 @@ class addEvent: UIViewController {
     }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
-        switch switcher.selectedSegmentIndex {
+        switch eventTypeSwitcher.selectedSegmentIndex {
         case 0:
             pickerDate.hidden = false
             pickerDateTime.hidden = true
@@ -113,22 +116,21 @@ class addEvent: UIViewController {
         let nameEvent = titleEvent.text! as String
         let noteEvent = noteField.text! as String
         
-        if switcher.selectedSegmentIndex == 0 {
+        if eventTypeSwitcher.selectedSegmentIndex == 0 {
             
             let startDate = pickerDate.date
             let endDate = pickerDate.date
             
             if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
                 eventStore.requestAccessToEntityType(.Event, completion: {
-                    
                     granted, error in
-                    self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
+                    self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime: self.alartTime)
                     print("24 hour")
                     
                 })
             } else {
-                if switcher.selectedSegmentIndex == 0 {
-                    createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
+                if eventTypeSwitcher.selectedSegmentIndex == 0 {
+                    createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime:  alartTime)
                     print("24 hour")
 
                 }
@@ -142,11 +144,11 @@ class addEvent: UIViewController {
                     if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
                     eventStore.requestAccessToEntityType(.Event, completion: {
                     granted, error in
-                        self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
+                        self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime:  self.alartTime)
                         print("1 hour")
                     })
                     } else {
-                        createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
+                        createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime: alartTime)
             print("1 hour")
             }
         
@@ -170,14 +172,15 @@ class addEvent: UIViewController {
 //        event.calendar = eventStore.defaultCalendarForNewEvents
 //    }
     
-    func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String, allDay: Bool) {
+    func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String, allDay: Bool, alarmSetTime: NSTimeInterval) {
         let event = EKEvent(eventStore: eventStore)
-        
+        let alarm = EKAlarm(relativeOffset: alarmSetTime)
         event.title = title
         event.notes = note
         event.startDate = startDate
         event.endDate = endDate
         event.allDay = allDay
+        event.addAlarm(alarm)
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.saveEvent(event, span: .ThisEvent)
@@ -196,6 +199,26 @@ class addEvent: UIViewController {
                 print("Bad things happened")
             }
         }
+    }
+    
+    @IBAction func timeAlertSet(sender: UISegmentedControl) {
+        switch alertSwitcher.selectedSegmentIndex {
+        case 0:
+            alartTime = 60 * 60
+        case 1:
+            alartTime = 24 * 60 * 60
+        case 2:
+            alartTime = 24 * 60 * 60 * 2
+        case 3:
+            alartTime = 24 * 60 * 60 * 7
+        default:
+            break;
+        }
+    }
+    
+    
+    @IBAction func backEventList(){
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
 }

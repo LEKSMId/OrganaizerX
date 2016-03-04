@@ -194,7 +194,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
                                 <rect key="frame" x="20" y="72" width="560" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="0KQ-zQ-zDh"/>
@@ -242,6 +242,9 @@
                                     <segment title="2 day"/>
                                     <segment title="1 week"/>
                                 </segments>
+                                <connections>
+                                    <action selector="timeAlert:" destination="5gP-pu-Jz2" eventType="valueChanged" id="PA8-g5-tH6"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRt-KE-jSh">
                                 <rect key="frame" x="225" y="509" width="34" height="30"/>
@@ -258,6 +261,7 @@
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="backEventList" destination="5gP-pu-Jz2" eventType="touchUpInside" id="aLX-jK-RP7"/>
                                     <action selector="saveEvent:" destination="5gP-pu-Jz2" eventType="touchUpInside" id="Fvo-4D-n0Y"/>
                                 </connections>
                             </button>
@@ -331,10 +335,11 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="alertSwitcher" destination="A2s-60-k5F" id="Xup-eW-laB"/>
+                        <outlet property="eventTypeSwitcher" destination="Rw2-Fx-Jbz" id="HK5-he-yfz"/>
                         <outlet property="noteField" destination="f4T-js-RVi" id="f31-Bk-yRI"/>
                         <outlet property="pickerDate" destination="FUZ-nT-NDb" id="SqP-lQ-e9W"/>
                         <outlet property="pickerDateTime" destination="vXk-HD-FL2" id="13e-X6-Adr"/>
-                        <outlet property="switcher" destination="Rw2-Fx-Jbz" id="fWx-vw-8Xm"/>
                         <outlet property="titleEvent" destination="EPI-eF-CNJ" id="Kob-dU-Nlo"/>
                     </connections>
                 </viewController>
