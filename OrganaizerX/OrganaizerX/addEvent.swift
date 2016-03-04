@@ -116,63 +116,68 @@ class addEvent: UIViewController {
         if switcher.selectedSegmentIndex == 0 {
             
             let startDate = pickerDate.date
-            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60)
+            let endDate = pickerDate.date
             
             if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
                 eventStore.requestAccessToEntityType(.Event, completion: {
                     
                     granted, error in
-                    self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+                    self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
+                    print("24 hour")
+                    
                 })
             } else {
-                createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
+                if switcher.selectedSegmentIndex == 0 {
+                    createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
+                    print("24 hour")
+
+                }
             }
-        } //else {
-        //
-        //            let startDate = pickerDateTime.
-        //
-        //            let endDate = startDate.dateByAddingTimeInterval(24 * 60 * 60)
-        //
-        //            if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-        //            eventStore.requestAccessToEntityType(.Event, completion: {
-        //            granted, error in
-        //                self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
-        //            })
-        //            } else {
-        //                createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent)
-        //            }
-        //
+        } else {
         
-        //        }
+                    let startDate = pickerDateTime.date
+        
+                    let endDate = startDate.dateByAddingTimeInterval(60 * 60)
+        
+                    if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+                    eventStore.requestAccessToEntityType(.Event, completion: {
+                    granted, error in
+                        self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
+                        print("1 hour")
+                    })
+                    } else {
+                        createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
+            print("1 hour")
+            }
+        
+        
+        }
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
-        
-        //        sendEventInfo()
-        
+        sendEventInfo()
         saveNewItem()
-        
-            
     }
     
     var savedEventId : String = ""
     
-    func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String) {
+//    func createBirthdayEvent(eventStore: EKEventStore, title: String, note: String, allDay: Bool) {
+//        let event = EKEvent(eventStore: eventStore)
+//        
+//        event.title = title
+//        event.notes = note
+//        event.allDay = allDay
+//        event.calendar = eventStore.defaultCalendarForNewEvents
+//    }
+    
+    func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String, allDay: Bool) {
         let event = EKEvent(eventStore: eventStore)
-        
-        //        let firstSaturdayMarch2015DateComponents = NSDateComponents()
-        //        firstSaturdayMarch2015DateComponents.year = 2015
-        //        firstSaturdayMarch2015DateComponents.month = 3
-        //        firstSaturdayMarch2015DateComponents.weekday = 7
-        //        firstSaturdayMarch2015DateComponents.weekdayOrdinal = 1
-        //        firstSaturdayMarch2015DateComponents.hour = 11
-        //        firstSaturdayMarch2015DateComponents.minute = 0
-        //        firstSaturdayMarch2015DateComponents.timeZone = NSTimeZone(name: "US/Eastern")
         
         event.title = title
         event.notes = note
         event.startDate = startDate
         event.endDate = endDate
+        event.allDay = allDay
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.saveEvent(event, span: .ThisEvent)
