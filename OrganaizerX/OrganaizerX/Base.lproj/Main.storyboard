@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="812" y="669"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Event-->
         <scene sceneID="VVP-h0-bZk">
             <objects>
                 <viewController id="06D-Z7-B8j" customClass="mainViewController" customModule="OrganaizerX" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,7 +123,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="mail" id="JMf-a8-IG4"/>
-                    <navigationItem key="navigationItem" id="0DQ-H4-2Cd">
+                    <navigationItem key="navigationItem" title="Event" id="0DQ-H4-2Cd">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="LCG-N5-EGw">
                             <connections>
                                 <action selector="reloadUI" destination="06D-Z7-B8j" id="4n0-n7-bEZ"/>
@@ -173,30 +173,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FUZ-nT-NDb">
-                                <rect key="frame" x="20" y="72" width="560" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="YmO-9y-fVI"/>
-                                    <constraint firstAttribute="width" constant="560" id="zNk-Ux-GGU"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="478082950.51660502">
-                                    <!--2016-02-25 08:49:10 +0000-->
-                                </date>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="YmO-9y-fVI"/>
-                                    </mask>
-                                </variation>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRt-KE-jSh">
-                                <rect key="frame" x="283" y="506" width="34" height="30"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveEvent:" destination="5gP-pu-Jz2" eventType="touchUpInside" id="FgM-SG-GJI"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Rw2-Fx-Jbz">
                                 <rect key="frame" x="235" y="456" width="131" height="29"/>
                                 <segments>
@@ -207,20 +183,22 @@
                                     <action selector="indexChanged:" destination="5gP-pu-Jz2" eventType="valueChanged" id="zqm-9c-eyc"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPI-eF-CNJ">
-                                <rect key="frame" x="30" y="336" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title event" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPI-eF-CNJ">
+                                <rect key="frame" x="30" y="250" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4T-js-RVi">
-                                <rect key="frame" x="20" y="389" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Note event" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4T-js-RVi">
+                                <rect key="frame" x="30" y="290" width="540" height="30"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker hidden="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
-                                <rect key="frame" x="20" y="215" width="560" height="130"/>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
+                                <rect key="frame" x="20" y="72" width="560" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="0KQ-zQ-zDh"/>
+                                    <constraint firstAttribute="height" constant="130" id="IiE-Ax-E66"/>
                                     <constraint firstAttribute="height" constant="130" id="tE7-4Q-UV4"/>
                                 </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="478082940.51660502">
@@ -233,26 +211,81 @@
                                     </mask>
                                 </variation>
                             </datePicker>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FUZ-nT-NDb">
+                                <rect key="frame" x="20" y="72" width="560" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="YmO-9y-fVI"/>
+                                    <constraint firstAttribute="height" constant="130" id="eKz-FS-ZbD"/>
+                                    <constraint firstAttribute="width" constant="555" id="zNk-Ux-GGU"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="478082950.51660502">
+                                    <!--2016-02-25 08:49:10 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-1609419600">
+                                    <!--1950-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YmO-9y-fVI"/>
+                                        <exclude reference="zNk-Ux-GGU"/>
+                                    </mask>
+                                </variation>
+                            </datePicker>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A2s-60-k5F">
+                                <rect key="frame" x="189" y="375" width="223" height="29"/>
+                                <segments>
+                                    <segment title="1 hour"/>
+                                    <segment title="1 day"/>
+                                    <segment title="2 day"/>
+                                    <segment title="1 week"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRt-KE-jSh">
+                                <rect key="frame" x="225" y="509" width="34" height="30"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveEvent:" destination="5gP-pu-Jz2" eventType="touchUpInside" id="FgM-SG-GJI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sr-6z-3KX">
+                                <rect key="frame" x="317" y="509" width="86" height="30"/>
+                                <state key="normal" title="Save &amp; Back">
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveEvent:" destination="5gP-pu-Jz2" eventType="touchUpInside" id="Fvo-4D-n0Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="FUZ-nT-NDb" secondAttribute="trailing" constant="50" id="0qZ-pJ-dcH"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="1cb-Qc-3S3"/>
+                            <constraint firstItem="0sr-6z-3KX" firstAttribute="top" secondItem="Rw2-Fx-Jbz" secondAttribute="bottom" constant="25" id="1iB-QV-iK9"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" constant="50" id="4Ef-QX-bun"/>
                             <constraint firstItem="vXk-HD-FL2" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="4RT-nO-09Y"/>
                             <constraint firstAttribute="trailing" secondItem="EPI-eF-CNJ" secondAttribute="trailing" constant="30" id="4jZ-Qs-XaF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FUZ-nT-NDb" secondAttribute="trailing" id="59F-IA-m1e"/>
                             <constraint firstAttribute="trailing" secondItem="f4T-js-RVi" secondAttribute="trailing" constant="30" id="9Bk-QU-5Q5"/>
+                            <constraint firstItem="FUZ-nT-NDb" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="Atp-g6-FFw"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="Fq3-bQ-15y"/>
-                            <constraint firstItem="YRt-KE-jSh" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="G0n-ev-4hP"/>
+                            <constraint firstItem="YRt-KE-jSh" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" constant="-58.5" id="G0n-ev-4hP"/>
+                            <constraint firstItem="FUZ-nT-NDb" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="G33-O7-dOV"/>
+                            <constraint firstItem="FUZ-nT-NDb" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="IdQ-G7-Ei2"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="top" secondItem="vXk-HD-FL2" secondAttribute="bottom" constant="48" id="J6B-Mc-EHN"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="KjM-Q3-k2g"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leading" constant="8" id="SCu-9k-ynh"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="URF-gM-gde"/>
                             <constraint firstAttribute="trailing" secondItem="f4T-js-RVi" secondAttribute="trailing" constant="8" id="VCk-YG-s9b"/>
+                            <constraint firstItem="U2h-cL-Ea7" firstAttribute="top" secondItem="0sr-6z-3KX" secondAttribute="bottom" constant="17" id="Zhq-pE-CNt"/>
                             <constraint firstItem="vXk-HD-FL2" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="Znj-6N-2Sx"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="top" secondItem="vXk-HD-FL2" secondAttribute="bottom" constant="131" id="aGe-XZ-71o"/>
-                            <constraint firstItem="YRt-KE-jSh" firstAttribute="top" secondItem="Rw2-Fx-Jbz" secondAttribute="bottom" constant="22" id="aMl-mj-xH0"/>
+                            <constraint firstItem="YRt-KE-jSh" firstAttribute="top" secondItem="Rw2-Fx-Jbz" secondAttribute="bottom" constant="25" id="aMl-mj-xH0"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="top" secondItem="EPI-eF-CNJ" secondAttribute="bottom" constant="8" id="cLx-RL-Bf8"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leading" constant="30" id="eyL-qs-uJs"/>
                             <constraint firstItem="vXk-HD-FL2" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="fBw-Wm-85b"/>
@@ -262,10 +295,14 @@
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="jYA-oN-8ms"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="jmg-mo-xmN"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leading" constant="30" id="lAj-49-9Ad"/>
-                            <constraint firstItem="U2h-cL-Ea7" firstAttribute="top" secondItem="YRt-KE-jSh" secondAttribute="bottom" constant="20" id="n2y-fm-3G0"/>
+                            <constraint firstItem="U2h-cL-Ea7" firstAttribute="top" secondItem="YRt-KE-jSh" secondAttribute="bottom" constant="17" id="n2y-fm-3G0"/>
+                            <constraint firstItem="0sr-6z-3KX" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" constant="59.5" id="nT2-14-jqw"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="top" secondItem="EPI-eF-CNJ" secondAttribute="bottom" constant="10" id="qCv-t6-swr"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="qIP-s2-Fg6"/>
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="rSY-CR-g4D"/>
+                            <constraint firstItem="FUZ-nT-NDb" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="sOw-Sp-Ktv"/>
+                            <constraint firstItem="A2s-60-k5F" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="yIx-uc-6gs"/>
+                            <constraint firstItem="A2s-60-k5F" firstAttribute="top" secondItem="f4T-js-RVi" secondAttribute="bottom" constant="55" id="yx9-DT-Crd"/>
                             <constraint firstItem="Rw2-Fx-Jbz" firstAttribute="centerY" secondItem="eRj-xA-dev" secondAttribute="centerY" id="zIY-Yy-SHB"/>
                         </constraints>
                         <variation key="default">
@@ -273,6 +310,8 @@
                                 <exclude reference="0qZ-pJ-dcH"/>
                                 <exclude reference="4Ef-QX-bun"/>
                                 <exclude reference="59F-IA-m1e"/>
+                                <exclude reference="G33-O7-dOV"/>
+                                <exclude reference="IdQ-G7-Ei2"/>
                                 <exclude reference="KjM-Q3-k2g"/>
                                 <exclude reference="1cb-Qc-3S3"/>
                                 <exclude reference="Fq3-bQ-15y"/>
