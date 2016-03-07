@@ -190,16 +190,7 @@ class addEvent: UIViewController {
         }
     }
     
-    func deleteEvent(eventStore: EKEventStore, eventIdentifier: String) {
-        let eventToRemove = eventStore.eventWithIdentifier(eventIdentifier)
-        if (eventToRemove != nil) {
-            do {
-                try eventStore.removeEvent(eventToRemove!, span: .ThisEvent)
-            } catch {
-                print("Bad things happened")
-            }
-        }
-    }
+
     
     @IBAction func timeAlertSet(sender: UISegmentedControl) {
         switch alertSwitcher.selectedSegmentIndex {

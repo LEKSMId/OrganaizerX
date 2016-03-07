@@ -15,11 +15,12 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    
     var items : [Item] = []
     var filteredItems = [Item]()
     var refreshControl: UIRefreshControl!
     var inSearchMode = false
-    
+    var numberIdEvent : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.reloadData()
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         if inSearchMode{
@@ -68,13 +70,29 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.numberIdEvent = indexPath.row
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.deleteEvent(indexPath.row)
+        }
+    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         if let call = tableView.dequeueReusableCellWithIdentifier("eventCell") as? eventCell{
             
             let item: Item!
-//            let item = self.items[indexPath.row]
-            
+          
             if inSearchMode {
               item = filteredItems[indexPath.row]
             } else {
@@ -99,6 +117,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         }
     }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchBar.text == nil || searchBar.text == ""{
@@ -107,14 +126,39 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             
             inSearchMode = true
-            let lower = searchBar.text!.lowercaseString
+            let lower = searchBar.text!
             filteredItems = items.filter({$0.title?.rangeOfString(lower) != nil})
             tableView.reloadData()
     
         }
     }
-    @IBAction func reloadUI() {
-        updateUI()
-    }
     
+    func deleteEvent(atIndex: Int) {
+        let appDelegate    = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let objectToRemove = items[atIndex] as NSManagedObject
+        
+        managedContext.deleteObject(objectToRemove)
+        
+        do
+        {
+            try managedContext.save()
+        }
+        catch
+        {
+            print("There is some error while updating CoreData.")
+        }
+        
+        items.removeAtIndex(atIndex)
+        
+        tableView.reloadData()
+    }
+
+    
+    @IBAction func sendDeleteEvent() {
+        func inicialItem(){
+            updateUI()
+    }
+
+    }
 }

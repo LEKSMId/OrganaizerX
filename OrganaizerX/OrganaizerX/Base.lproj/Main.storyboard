@@ -124,9 +124,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="mail" id="JMf-a8-IG4"/>
                     <navigationItem key="navigationItem" title="Event" id="0DQ-H4-2Cd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="LCG-N5-EGw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="LCG-N5-EGw">
                             <connections>
-                                <action selector="reloadUI" destination="06D-Z7-B8j" id="4n0-n7-bEZ"/>
+                                <action selector="sendDeleteEvent" destination="06D-Z7-B8j" id="9Qn-l7-PdY"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="is0-Dp-pTm">
@@ -152,14 +152,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1510" y="681"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="RF4-qI-WJT">
-            <objects>
-                <viewController id="3ms-np-N6I" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CIw-VI-2cD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2310" y="28"/>
         </scene>
         <!--Add Event-->
         <scene sceneID="K43-3d-p0h">
