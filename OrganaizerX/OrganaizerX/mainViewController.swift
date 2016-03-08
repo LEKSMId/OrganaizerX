@@ -15,7 +15,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
+    var savedEventId : String = ""
     var items : [Item] = []
     var filteredItems = [Item]()
     var refreshControl: UIRefreshControl!
@@ -77,13 +77,15 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.numberIdEvent = indexPath.row
-        
+//        return numberIdEvent
     }
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             self.deleteEvent(indexPath.row)
+            
+            
         }
     }
 
@@ -151,14 +153,36 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         items.removeAtIndex(atIndex)
         
+        removeEvent()
         tableView.reloadData()
     }
-
     
-    @IBAction func sendDeleteEvent() {
-        func inicialItem(){
-            updateUI()
+    func deleteEventKit(eventStore: EKEventStore, eventIdentifier: String) {
+        let eventToRemove = eventStore.eventWithIdentifier(eventIdentifier)
+        if (eventToRemove != nil) {
+            do {
+                try eventStore.removeEvent(eventToRemove!, span: .ThisEvent)
+            } catch {
+                print("Bad things happened")
+            }
+        }
     }
 
+    func removeEvent() {
+        
+        let itemTitle = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: itemTitle) as! Item
+        let eventStore = EKEventStore()
+        
+        
+        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+            eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) -> Void in
+                self.deleteEventKit(eventStore, eventIdentifier: item.title!)
+            })
+        } else {
+            deleteEventKit(eventStore, eventIdentifier: item.title!)
+        }
     }
+    
+
 }

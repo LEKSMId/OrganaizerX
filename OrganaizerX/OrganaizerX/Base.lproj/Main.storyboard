@@ -124,11 +124,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="mail" id="JMf-a8-IG4"/>
                     <navigationItem key="navigationItem" title="Event" id="0DQ-H4-2Cd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="LCG-N5-EGw">
-                            <connections>
-                                <action selector="sendDeleteEvent" destination="06D-Z7-B8j" id="9Qn-l7-PdY"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="is0-Dp-pTm">
                             <connections>
                                 <segue destination="5gP-pu-Jz2" kind="show" id="GCS-DX-hjb"/>
