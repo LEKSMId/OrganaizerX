@@ -75,7 +75,7 @@ class addEvent: UIViewController {
         item.date = pickerDate.date
         item.imageid = eventTypeSwitcher.selectedSegmentIndex
         item.noteEvent = noteField.text
-        
+        item.identifier = savedEventId
         
         do {
             try context.save()
@@ -163,15 +163,6 @@ class addEvent: UIViewController {
     
     var savedEventId : String = ""
     
-//    func createBirthdayEvent(eventStore: EKEventStore, title: String, note: String, allDay: Bool) {
-//        let event = EKEvent(eventStore: eventStore)
-//        
-//        event.title = title
-//        event.notes = note
-//        event.allDay = allDay
-//        event.calendar = eventStore.defaultCalendarForNewEvents
-//    }
-    
     func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String, allDay: Bool, alarmSetTime: NSTimeInterval) {
         let event = EKEvent(eventStore: eventStore)
         let alarm = EKAlarm(relativeOffset: alarmSetTime)
@@ -206,6 +197,7 @@ class addEvent: UIViewController {
             break;
         }
     }
+    
     
     
     @IBAction func backEventList(){
