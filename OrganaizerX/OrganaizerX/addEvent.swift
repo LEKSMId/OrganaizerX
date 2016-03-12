@@ -226,6 +226,7 @@ class addEvent: UIViewController {
         event.endDate = endDate
         event.allDay = allDay
         event.addAlarm(alarm)
+//        event.type = type
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.saveEvent(event, span: .ThisEvent)
