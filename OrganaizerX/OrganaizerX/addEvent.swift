@@ -22,7 +22,9 @@ class addEvent: UIViewController {
     @IBOutlet weak var noteField: UITextField!
     
     @IBOutlet weak var eventTypeSwitcher: UISegmentedControl!
-    @IBOutlet weak var alertSwitcher: UISegmentedControl!
+    @IBOutlet weak var alertSwitcherBirthday: UISegmentedControl!
+    @IBOutlet weak var alertSwitcherEvent: UISegmentedControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,12 +99,60 @@ class addEvent: UIViewController {
         
     }
     
+    @IBAction func timeAlertSetBirthday(sender: UISegmentedControl) {
+        switch alertSwitcherBirthday.selectedSegmentIndex {
+        case 0:
+            print("alertTime 1 День")
+            alartTime = 60 * 60 * 24
+        case 1:
+            print("alertTime 2 дня")
+            alartTime = 60 * 60 * 24 * 2
+        case 2:
+            print("alertTime 1 неделя")
+            alartTime = 60 * 60 * 24 * 7
+        case 3:
+            print("In time")
+            alartTime = 0
+        default:
+            alartTime = 0;
+        }
+    }
+    
+    @IBAction func timeAlertSetEvent(sender: UISegmentedControl){
+            switch alertSwitcherEvent.selectedSegmentIndex {
+                case 0:
+                    print("alertTime 15 min")
+                    alartTime = 60 * 15
+                case 1:
+                    print("alertTime 1 hour")
+                    alartTime = 60 * 60
+                case 2:
+                    print("alertTime 2 hour")
+                    alartTime = 60 * 60 * 2
+                case 3:
+                    print("alertTime 1 День")
+                    alartTime = 60 * 60 * 24
+                case 4:
+                    print("alertTime 2 дня")
+                    alartTime = 60 * 60 * 24 * 2
+                case 5:
+                    print("alertTime 1 неделя")
+                    alartTime = 60 * 60 * 24 * 7
+                default:
+                    alartTime = 0;
+            }
+    }
+    
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch eventTypeSwitcher.selectedSegmentIndex {
         case 0:
+            alertSwitcherBirthday.hidden = false
+            alertSwitcherEvent.hidden = true
             pickerDate.hidden = false
             pickerDateTime.hidden = true
         case 1:
+            alertSwitcherBirthday.hidden = true
+            alertSwitcherEvent.hidden = false
             pickerDate.hidden = true
             pickerDateTime.hidden = false
         default:
@@ -126,12 +176,14 @@ class addEvent: UIViewController {
                     granted, error in
                     self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime: self.alartTime)
                     print("24 hour")
+                    print(self.alartTime)
                     
                 })
             } else {
                 if eventTypeSwitcher.selectedSegmentIndex == 0 {
                     createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime:  alartTime)
                     print("24 hour")
+                    print(alartTime)
 
                 }
             }
@@ -146,10 +198,12 @@ class addEvent: UIViewController {
                     granted, error in
                         self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime:  self.alartTime)
                         print("1 hour")
+                        print(self.alartTime)
                     })
                     } else {
                         createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime: alartTime)
             print("1 hour")
+                        print(alartTime)
             }
         
         
@@ -180,25 +234,6 @@ class addEvent: UIViewController {
             print("Bad things happened")
         }
     }
-    
-
-    
-    @IBAction func timeAlertSet(sender: UISegmentedControl) {
-        switch alertSwitcher.selectedSegmentIndex {
-        case 0:
-            alartTime = 60 * 60
-        case 1:
-            alartTime = 24 * 60 * 60
-        case 2:
-            alartTime = 24 * 60 * 60 * 2
-        case 3:
-            alartTime = 24 * 60 * 60 * 7
-        default:
-            break;
-        }
-    }
-    
-    
     
     @IBAction func backEventList(){
         navigationController?.popToRootViewControllerAnimated(true)

@@ -53,6 +53,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if result != nil {
             self.items = result as! [Item]
         }
+        
         self.tableView.reloadData()
     }
     
