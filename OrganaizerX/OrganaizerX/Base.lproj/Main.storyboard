@@ -272,8 +272,8 @@
                                     </mask>
                                 </variation>
                             </datePicker>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxB-CZ-VWF">
-                                <rect key="frame" x="392" y="425" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxB-CZ-VWF">
+                                <rect key="frame" x="401" y="423" width="51" height="31"/>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -294,6 +294,7 @@
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="top" secondItem="vXk-HD-FL2" secondAttribute="bottom" constant="40" id="J6B-Mc-EHN"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="KjM-Q3-k2g"/>
                             <constraint firstItem="m43-hd-He5" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="NI5-G7-T4W"/>
+                            <constraint firstItem="AxB-CZ-VWF" firstAttribute="top" secondItem="A2s-60-k5F" secondAttribute="bottom" constant="28" id="RGy-Lb-UKb"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leading" constant="8" id="SCu-9k-ynh"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="URF-gM-gde"/>
                             <constraint firstAttribute="trailing" secondItem="f4T-js-RVi" secondAttribute="trailing" constant="8" id="VCk-YG-s9b"/>
@@ -312,6 +313,7 @@
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="jYA-oN-8ms"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="jmg-mo-xmN"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leading" constant="30" id="lAj-49-9Ad"/>
+                            <constraint firstItem="AxB-CZ-VWF" firstAttribute="leading" secondItem="Rw2-Fx-Jbz" secondAttribute="trailing" constant="35" id="lHb-rg-LKl"/>
                             <constraint firstItem="U2h-cL-Ea7" firstAttribute="top" secondItem="YRt-KE-jSh" secondAttribute="bottom" constant="17" id="n2y-fm-3G0"/>
                             <constraint firstItem="0sr-6z-3KX" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" constant="59.5" id="nT2-14-jqw"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="top" secondItem="EPI-eF-CNJ" secondAttribute="bottom" constant="10" id="qCv-t6-swr"/>
