@@ -161,7 +161,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Rw2-Fx-Jbz">
-                                <rect key="frame" x="235" y="456" width="131" height="29"/>
+                                <rect key="frame" x="235" y="425" width="131" height="29"/>
                                 <segments>
                                     <segment title="Birthday"/>
                                     <segment title="Meeting"/>
@@ -170,15 +170,15 @@
                                     <action selector="indexChanged:" destination="5gP-pu-Jz2" eventType="valueChanged" id="zqm-9c-eyc"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title event" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPI-eF-CNJ">
-                                <rect key="frame" x="30" y="250" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title event" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EPI-eF-CNJ">
+                                <rect key="frame" x="30" y="242" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Note event" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4T-js-RVi">
-                                <rect key="frame" x="30" y="290" width="540" height="30"/>
+                                <rect key="frame" x="30" y="282" width="540" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-HD-FL2">
@@ -195,29 +195,6 @@
                                     <mask key="constraints">
                                         <exclude reference="0KQ-zQ-zDh"/>
                                         <exclude reference="tE7-4Q-UV4"/>
-                                    </mask>
-                                </variation>
-                            </datePicker>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FUZ-nT-NDb">
-                                <rect key="frame" x="20" y="72" width="560" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="YmO-9y-fVI"/>
-                                    <constraint firstAttribute="height" constant="130" id="eKz-FS-ZbD"/>
-                                    <constraint firstAttribute="width" constant="555" id="zNk-Ux-GGU"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="478082950.51660502">
-                                    <!--2016-02-25 08:49:10 +0000-->
-                                </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-1609419600">
-                                    <!--1950-01-01 11:00:00 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                    <!--2037-12-31 11:00:00 +0000-->
-                                </date>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="YmO-9y-fVI"/>
-                                        <exclude reference="zNk-Ux-GGU"/>
                                     </mask>
                                 </variation>
                             </datePicker>
@@ -241,7 +218,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="m43-hd-He5">
-                                <rect key="frame" x="150" y="375" width="300" height="29"/>
+                                <rect key="frame" x="150" y="367" width="300" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="6ED-nZ-PeH"/>
                                 </constraints>
@@ -256,7 +233,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A2s-60-k5F">
-                                <rect key="frame" x="150" y="375" width="300" height="29"/>
+                                <rect key="frame" x="150" y="367" width="300" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="bLc-Xl-lMz"/>
                                 </constraints>
@@ -272,6 +249,29 @@
                                     <action selector="timeAlertSetEvent:" destination="5gP-pu-Jz2" eventType="valueChanged" id="9B7-xo-eED"/>
                                 </connections>
                             </segmentedControl>
+                            <datePicker opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FUZ-nT-NDb">
+                                <rect key="frame" x="20" y="20" width="560" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="YmO-9y-fVI"/>
+                                    <constraint firstAttribute="height" constant="130" id="eKz-FS-ZbD"/>
+                                    <constraint firstAttribute="width" constant="555" id="zNk-Ux-GGU"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="478082950.51660502">
+                                    <!--2016-02-25 08:49:10 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-1609419600">
+                                    <!--1950-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YmO-9y-fVI"/>
+                                        <exclude reference="zNk-Ux-GGU"/>
+                                    </mask>
+                                </variation>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -288,7 +288,7 @@
                             <constraint firstItem="YRt-KE-jSh" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" constant="-58.5" id="G0n-ev-4hP"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="G33-O7-dOV"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leadingMargin" id="IdQ-G7-Ei2"/>
-                            <constraint firstItem="EPI-eF-CNJ" firstAttribute="top" secondItem="vXk-HD-FL2" secondAttribute="bottom" constant="48" id="J6B-Mc-EHN"/>
+                            <constraint firstItem="EPI-eF-CNJ" firstAttribute="top" secondItem="vXk-HD-FL2" secondAttribute="bottom" constant="40" id="J6B-Mc-EHN"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="top" secondItem="Q23-q0-Vc2" secondAttribute="bottom" constant="8" id="KjM-Q3-k2g"/>
                             <constraint firstItem="m43-hd-He5" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="NI5-G7-T4W"/>
                             <constraint firstItem="f4T-js-RVi" firstAttribute="leading" secondItem="eRj-xA-dev" secondAttribute="leading" constant="8" id="SCu-9k-ynh"/>
@@ -316,6 +316,7 @@
                             <constraint firstItem="EPI-eF-CNJ" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="rSY-CR-g4D"/>
                             <constraint firstItem="FUZ-nT-NDb" firstAttribute="trailing" secondItem="eRj-xA-dev" secondAttribute="trailingMargin" id="sOw-Sp-Ktv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="m43-hd-He5" secondAttribute="trailing" constant="168" id="upf-b4-IV2"/>
+                            <constraint firstItem="Rw2-Fx-Jbz" firstAttribute="top" secondItem="A2s-60-k5F" secondAttribute="bottom" constant="30" id="wX7-kL-gSa"/>
                             <constraint firstItem="A2s-60-k5F" firstAttribute="centerX" secondItem="eRj-xA-dev" secondAttribute="centerX" id="yIx-uc-6gs"/>
                             <constraint firstItem="A2s-60-k5F" firstAttribute="top" secondItem="f4T-js-RVi" secondAttribute="bottom" constant="55" id="yx9-DT-Crd"/>
                             <constraint firstItem="Rw2-Fx-Jbz" firstAttribute="centerY" secondItem="eRj-xA-dev" secondAttribute="centerY" id="zIY-Yy-SHB"/>
@@ -342,6 +343,8 @@
                                 <exclude reference="atD-N2-ust"/>
                                 <exclude reference="upf-b4-IV2"/>
                                 <exclude reference="zIY-Yy-SHB"/>
+                                <exclude reference="aMl-mj-xH0"/>
+                                <exclude reference="1iB-QV-iK9"/>
                             </mask>
                         </variation>
                     </view>

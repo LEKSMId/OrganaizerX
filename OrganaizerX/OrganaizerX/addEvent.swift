@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 import CoreData
 
-class addEvent: UIViewController {
+class addEvent: UIViewController, UITextFieldDelegate {
 
     var items : [Item] = []
     var alartTime : Double = 0
@@ -29,19 +29,26 @@ class addEvent: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        self.titleEvent.delegate = self;
+        self.noteField.delegate = self;
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return 5
         return self.items.count
     }
-    
-    //    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! UITableViewCell
-    //        cell.textLabel?.text = data[indexPath.row]
-    //        return cell
-    //    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -210,9 +217,15 @@ class addEvent: UIViewController {
         }
     }
     
+    func clearTextField() {
+        titleEvent.text = ""
+        noteField.text = ""
+    }
+    
     @IBAction func saveEvent(sender: AnyObject) {
         sendEventInfo()
         saveNewItem()
+        clearTextField()
     }
     
     var savedEventId : String = ""

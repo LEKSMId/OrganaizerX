@@ -31,9 +31,14 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
             
         
-        // Do any additional setup after loading the view, typically from a nib.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
     override func viewWillAppear(animated: Bool) {
         updateUI()
     }
@@ -91,17 +96,22 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if editingStyle == .Delete {
             self.deleteEvent(indexPath.row)
-            self.removeEvent()
+        
             
         }
     }
+    
+    func sortEvent() {
+        items = items.sort({$0.date!.compare($1.date!) == NSComparisonResult.OrderedAscending })
+        tableView.reloadData()
+    }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
+        
         if let call = tableView.dequeueReusableCellWithIdentifier("eventCell") as? eventCell{
             
             let item: Item!
-          
+            
             if inSearchMode {
               item = filteredItems[indexPath.row]
             } else {
@@ -120,12 +130,12 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             call.configureCell(imag, text: item.title!, note: item.noteEvent!)
             return call
-
-        } else {    
+        } else {
             return eventCell()
-        
         }
     }
+    
+   
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -159,7 +169,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         items.removeAtIndex(atIndex)
-        
+        self.removeEvent(atIndex)
         tableView.reloadData()
     }
     
@@ -176,20 +186,22 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    func removeEvent() {
-
+    func removeEvent(atIndex: Int) {
+        if items.count != 0 {
+        let item = items[atIndex]
+        
         let eventStore = EKEventStore()
         
+            print("Delete item")
         
         if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
             eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) -> Void in
-                self.deleteEventKit(eventStore, eventIdentifier: self.sentEventIdentify)
+                self.deleteEventKit(eventStore, eventIdentifier: item.identifier!)
             })
         } else {
-            deleteEventKit(eventStore, eventIdentifier: self.sentEventIdentify)
+            deleteEventKit(eventStore, eventIdentifier: item.identifier!)
+            }
         }
     }
-    
-
     
 }
