@@ -17,6 +17,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var sentEventIdentify : String = ""
     var items : [Item] = []
+    var itemsSort = []
     var filteredItems = [Item]()
     var refreshControl: UIRefreshControl!
     var inSearchMode = false
@@ -28,7 +29,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.searchBar.delegate = self
-        
+        sortEvent()
             
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -41,6 +42,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewWillAppear(animated: Bool) {
         updateUI()
+        sortEvent()
     }
     
     func updateUI() {
@@ -96,13 +98,12 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if editingStyle == .Delete {
             self.deleteEvent(indexPath.row)
-        
-            
         }
     }
     
     func sortEvent() {
-        items = items.sort({$0.date!.compare($1.date!) == NSComparisonResult.OrderedAscending })
+        
+        items = self.items.sort{$0.date!.compare($1.date!) == NSComparisonResult.OrderedAscending }
         tableView.reloadData()
     }
 
@@ -187,7 +188,9 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func removeEvent(atIndex: Int) {
+        
         if items.count != 0 {
+        
         let item = items[atIndex]
         
         let eventStore = EKEventStore()
@@ -201,7 +204,8 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             deleteEventKit(eventStore, eventIdentifier: item.identifier!)
             }
+        
         }
     }
-    
+
 }

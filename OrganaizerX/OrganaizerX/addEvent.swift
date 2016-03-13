@@ -109,17 +109,17 @@ class addEvent: UIViewController, UITextFieldDelegate {
     @IBAction func timeAlertSetBirthday(sender: UISegmentedControl) {
         switch alertSwitcherBirthday.selectedSegmentIndex {
         case 0:
-            print("alertTime 1 День")
-            alartTime = 60 * 60 * 24
-        case 1:
-            print("alertTime 2 дня")
-            alartTime = 60 * 60 * 24 * 2
-        case 2:
-            print("alertTime 1 неделя")
-            alartTime = 60 * 60 * 24 * 7
-        case 3:
             print("In time")
             alartTime = 0
+        case 1:
+            print("alertTime 1 День")
+            alartTime = 60 * 60 * 24
+        case 2:
+            print("alertTime 2 дня")
+            alartTime = 60 * 60 * 24 * 2
+        case 3:
+            print("alertTime 1 неделя")
+            alartTime = 60 * 60 * 24 * 7
         default:
             alartTime = 0;
         }
@@ -146,7 +146,7 @@ class addEvent: UIViewController, UITextFieldDelegate {
                     print("alertTime 1 неделя")
                     alartTime = 60 * 60 * 24 * 7
                 default:
-                    alartTime = 0;
+                    alartTime = 60 * 15;
             }
     }
     
