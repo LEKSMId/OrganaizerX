@@ -160,8 +160,9 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func deleteEvent(atIndex: Int) {
+        
         self.removeEvent(atIndex)
-        print("Delete in list")
+
         let appDelegate    = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let objectToRemove = items[atIndex] as NSManagedObject
@@ -199,8 +200,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let item = items[atIndex]
         
         let eventStore = EKEventStore()
-        
-            print("Delete item")
         
         if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
             eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) -> Void in

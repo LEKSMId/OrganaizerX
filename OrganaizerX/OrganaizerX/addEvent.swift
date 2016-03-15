@@ -13,7 +13,7 @@ import CoreData
 class addEvent: UIViewController, UITextFieldDelegate {
 
     var items : [Item] = []
-    var alartTime : Double = 0
+    var alartTime : Double = -1 * 60 * 60 * 24
     
     @IBOutlet weak var pickerDate: UIDatePicker!
     @IBOutlet weak var pickerDateTime: UIDatePicker!
@@ -37,6 +37,14 @@ class addEvent: UIViewController, UITextFieldDelegate {
         self.noteField.delegate = self;
     }
     
+    func setAlarmTime() {
+        if eventTypeSwitcher.selectedSegmentIndex == 0 {
+            self.alartTime = -1 * 60 * 60 * 24
+        } else {
+            alartTime = -1 * 15 * 60
+        }
+    }
+    
     func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -47,7 +55,6 @@ class addEvent: UIViewController, UITextFieldDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return 5
         return self.items.count
     }
     
@@ -121,32 +128,31 @@ class addEvent: UIViewController, UITextFieldDelegate {
     @IBAction func alertSelect(sender: UISwitch) {
         
         if powerAlert.on {
+            if eventTypeSwitcher.selectedSegmentIndex == 0{
+                alertSwitcherBirthday.hidden = false
+                alertSwitcherEvent.hidden = true
+            } else if eventTypeSwitcher.selectedSegmentIndex == 1{
+                alertSwitcherEvent.hidden = false
+                alertSwitcherBirthday.hidden = true
+            }
+        } else {
             alertSwitcherBirthday.hidden = true
             alertSwitcherEvent.hidden = true
-        } else if eventTypeSwitcher.selectedSegmentIndex == 0{
-            alertSwitcherBirthday.hidden = false
-            alertSwitcherEvent.hidden = true
-        } else if eventTypeSwitcher.selectedSegmentIndex == 1{
-            alertSwitcherEvent.hidden = false
-            alertSwitcherBirthday.hidden = true
         }
         
     }
     
     @IBAction func timeAlertSetBirthday(sender: UISegmentedControl) {
-        switch alertSwitcherBirthday.selectedSegmentIndex {
-        case 0:
-            print("alertTime 1 День")
-            alartTime = 60 * 60 * 24
-        case 1:
-            print("alertTime 2 дня")
-            alartTime = 60 * 60 * 24 * 2
-        case 2:
-            print("alertTime 1 неделя")
-            alartTime = 60 * 60 * 24 * 7
-        default:
-            alartTime = 60 * 60 * 24;
-        }
+                switch alertSwitcherBirthday.selectedSegmentIndex {
+                case 0:
+                    alartTime = -1 * (60 * 60 * 24)
+                case 1:
+                    alartTime = -1 * (60 * 60 * 24 * 2)
+                case 2:
+                    alartTime = -1 * (60 * 60 * 24 * 7)
+                default:
+                    alartTime = -1 * (60 * 60 * 24);
+            }
     }
     
     
@@ -154,25 +160,19 @@ class addEvent: UIViewController, UITextFieldDelegate {
     @IBAction func timeAlertSetEvent(sender: UISegmentedControl){
             switch alertSwitcherEvent.selectedSegmentIndex {
                 case 0:
-                    print("alertTime 15 min")
-                    alartTime = 60 * 15
+                    alartTime = -1 * ( 60 * 15 )
                 case 1:
-                    print("alertTime 1 hour")
-                    alartTime = 60 * 60
+                    alartTime = -1 * (60 * 60)
                 case 2:
-                    print("alertTime 2 hour")
-                    alartTime = 60 * 60 * 2
+                    alartTime = -1 * (60 * 60 * 2)
                 case 3:
-                    print("alertTime 1 День")
-                    alartTime = 60 * 60 * 24
+                    alartTime = -1 * (60 * 60 * 24)
                 case 4:
-                    print("alertTime 2 дня")
-                    alartTime = 60 * 60 * 24 * 2
+                    alartTime = -1 * (60 * 60 * 24 * 2)
                 case 5:
-                    print("alertTime 1 неделя")
-                    alartTime = 60 * 60 * 24 * 7
+                    alartTime = -1 * (60 * 60 * 24 * 7)
                 default:
-                    alartTime = 60 * 15;
+                    alartTime = -1 * (60 * 15);
             }
     }
     
@@ -180,32 +180,36 @@ class addEvent: UIViewController, UITextFieldDelegate {
         switch eventTypeSwitcher.selectedSegmentIndex {
         case 0:
             if powerAlert.on {
-                alertSwitcherBirthday.hidden = true
-                alertSwitcherEvent.hidden = true
-            } else if eventTypeSwitcher.selectedSegmentIndex == 0{
+                if eventTypeSwitcher.selectedSegmentIndex == 0{
                 alertSwitcherBirthday.hidden = false
                 alertSwitcherEvent.hidden = true
             } else if eventTypeSwitcher.selectedSegmentIndex == 1{
                 alertSwitcherEvent.hidden = false
                 alertSwitcherBirthday.hidden = true
+                }
+            } else {
+                alertSwitcherEvent.hidden = true
+                alertSwitcherBirthday.hidden = true
             }
             alertSwitcherBirthday.selectedSegmentIndex = 0
-            self.alartTime = 60 * 60 * 24
+            self.alartTime = -1 * (60 * 60 * 24)
             pickerDate.hidden = false
             pickerDateTime.hidden = true
         case 1:
             if powerAlert.on {
-                alertSwitcherBirthday.hidden = true
+                if eventTypeSwitcher.selectedSegmentIndex == 0{
+                    alertSwitcherBirthday.hidden = false
+                    alertSwitcherEvent.hidden = true
+                } else if eventTypeSwitcher.selectedSegmentIndex == 1{
+                    alertSwitcherEvent.hidden = false
+                    alertSwitcherBirthday.hidden = true
+                }
+            } else {
                 alertSwitcherEvent.hidden = true
-            } else if eventTypeSwitcher.selectedSegmentIndex == 0{
-                alertSwitcherBirthday.hidden = false
-                alertSwitcherEvent.hidden = true
-            } else if eventTypeSwitcher.selectedSegmentIndex == 1{
-                alertSwitcherEvent.hidden = false
                 alertSwitcherBirthday.hidden = true
             }
             alertSwitcherEvent.selectedSegmentIndex = 0
-            self.alartTime = 15 * 60
+            self.alartTime = -1 * (15 * 60)
             pickerDate.hidden = true
             pickerDateTime.hidden = false
         default:
@@ -228,15 +232,11 @@ class addEvent: UIViewController, UITextFieldDelegate {
                     eventStore.requestAccessToEntityType(.Event, completion: {
                         granted, error in
                         self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime: self.alartTime)
-                        print("24 hour")
-                        print(self.alartTime)
                         
                     })
                 } else {
                     if eventTypeSwitcher.selectedSegmentIndex == 0 {
                         createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime:  alartTime)
-                        print("24 hour")
-                        print(alartTime)
 
                     }
                 }
@@ -249,14 +249,9 @@ class addEvent: UIViewController, UITextFieldDelegate {
                         eventStore.requestAccessToEntityType(.Event, completion: {
                         granted, error in
                             self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime:  self.alartTime)
-                            print("1 hour")
-                            print(self.alartTime)
                         })
                         } else {
                             createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime: alartTime)
-                print("1 hour")
-                            print(alartTime)
-                            print("\(startDate)")
                 }
                 }
             }
@@ -278,15 +273,11 @@ class addEvent: UIViewController, UITextFieldDelegate {
                         eventStore.requestAccessToEntityType(.Event, completion: {
                             granted, error in
                             self.createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
-                            print("24 hour")
-                            print(self.alartTime)
                             
                         })
                     } else {
                         if eventTypeSwitcher.selectedSegmentIndex == 0 {
                             createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
-                            print("24 hour")
-                            print(alartTime)
                             
                         }
                     }
@@ -299,14 +290,9 @@ class addEvent: UIViewController, UITextFieldDelegate {
                         eventStore.requestAccessToEntityType(.Event, completion: {
                             granted, error in
                             self.createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
-                            print("1 hour")
-                            print(self.alartTime)
                         })
                     } else {
                         createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
-                        print("1 hour")
-                        print(alartTime)
-                        print("\(startDate)")
 
                     }
                 }
@@ -319,10 +305,12 @@ class addEvent: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveEvent(sender: AnyObject) {
         if powerAlert.on {
-            sendEventInfoNoneAlarm()
-        } else {
             sendEventInfo()
+        } else {
+            sendEventInfoNoneAlarm()
+
         }
+        print("\(self.alartTime)")
         saveNewItem()
         clearTextField()
     }
