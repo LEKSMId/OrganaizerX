@@ -21,6 +21,7 @@ class addEvent: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var titleEvent: UITextField!
     @IBOutlet weak var noteField: UITextField!
     
+    @IBOutlet weak var powerAlert: UISwitch!
     @IBOutlet weak var eventTypeSwitcher: UISegmentedControl!
     @IBOutlet weak var alertSwitcherBirthday: UISegmentedControl!
     @IBOutlet weak var alertSwitcherEvent: UISegmentedControl!
@@ -66,7 +67,14 @@ class addEvent: UIViewController, UITextFieldDelegate {
                 
                 imag = UIImage(named: "2")
             }
-            call.configureCell(imag, text: item.title!, note: item.noteEvent!)
+            
+            var dateStr: String {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                return dateFormatter.stringFromDate(item.date!)
+            }
+            
+            call.configureCell(imag, text: item.title!, note: item.noteEvent!, date: dateStr)
             return call
         } else {
             return eventCell()
@@ -81,7 +89,11 @@ class addEvent: UIViewController, UITextFieldDelegate {
         let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as! Item
         
         item.title = titleEvent.text
-        item.date = pickerDate.date
+        if eventTypeSwitcher.selectedSegmentIndex == 0 {
+            item.date = pickerDate.date
+        } else {
+            item.date = pickerDateTime.date
+        }
         item.imageid = eventTypeSwitcher.selectedSegmentIndex
         item.noteEvent = noteField.text
         item.identifier = savedEventId
@@ -106,6 +118,21 @@ class addEvent: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func alertSelect(sender: UISwitch) {
+        
+        if powerAlert.on {
+            alertSwitcherBirthday.hidden = true
+            alertSwitcherEvent.hidden = true
+        } else if eventTypeSwitcher.selectedSegmentIndex == 0{
+            alertSwitcherBirthday.hidden = false
+            alertSwitcherEvent.hidden = true
+        } else if eventTypeSwitcher.selectedSegmentIndex == 1{
+            alertSwitcherEvent.hidden = false
+            alertSwitcherBirthday.hidden = true
+        }
+        
+    }
+    
     @IBAction func timeAlertSetBirthday(sender: UISegmentedControl) {
         switch alertSwitcherBirthday.selectedSegmentIndex {
         case 0:
@@ -124,6 +151,8 @@ class addEvent: UIViewController, UITextFieldDelegate {
             alartTime = 0;
         }
     }
+    
+    
     
     @IBAction func timeAlertSetEvent(sender: UISegmentedControl){
             switch alertSwitcherEvent.selectedSegmentIndex {
@@ -153,13 +182,29 @@ class addEvent: UIViewController, UITextFieldDelegate {
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch eventTypeSwitcher.selectedSegmentIndex {
         case 0:
-            alertSwitcherBirthday.hidden = false
-            alertSwitcherEvent.hidden = true
+            if powerAlert.on {
+                alertSwitcherBirthday.hidden = true
+                alertSwitcherEvent.hidden = true
+            } else if eventTypeSwitcher.selectedSegmentIndex == 0{
+                alertSwitcherBirthday.hidden = false
+                alertSwitcherEvent.hidden = true
+            } else if eventTypeSwitcher.selectedSegmentIndex == 1{
+                alertSwitcherEvent.hidden = false
+                alertSwitcherBirthday.hidden = true
+            }
             pickerDate.hidden = false
             pickerDateTime.hidden = true
         case 1:
-            alertSwitcherBirthday.hidden = true
-            alertSwitcherEvent.hidden = false
+            if powerAlert.on {
+                alertSwitcherBirthday.hidden = true
+                alertSwitcherEvent.hidden = true
+            } else if eventTypeSwitcher.selectedSegmentIndex == 0{
+                alertSwitcherBirthday.hidden = false
+                alertSwitcherEvent.hidden = true
+            } else if eventTypeSwitcher.selectedSegmentIndex == 1{
+                alertSwitcherEvent.hidden = false
+                alertSwitcherBirthday.hidden = true
+            }
             pickerDate.hidden = true
             pickerDateTime.hidden = false
         default:
@@ -197,7 +242,6 @@ class addEvent: UIViewController, UITextFieldDelegate {
         } else {
         
                     let startDate = pickerDateTime.date
-        
                     let endDate = startDate.dateByAddingTimeInterval(60 * 60)
         
                     if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
@@ -211,6 +255,7 @@ class addEvent: UIViewController, UITextFieldDelegate {
                         createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime: alartTime)
             print("1 hour")
                         print(alartTime)
+                        print("\(startDate)")
             }
         
         
@@ -239,7 +284,6 @@ class addEvent: UIViewController, UITextFieldDelegate {
         event.endDate = endDate
         event.allDay = allDay
         event.addAlarm(alarm)
-//        event.type = type
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.saveEvent(event, span: .ThisEvent)

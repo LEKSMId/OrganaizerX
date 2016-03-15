@@ -119,6 +119,12 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 item = self.items[indexPath.row]
             }
             
+            var dateStr: String {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                return dateFormatter.stringFromDate(item.date!)
+            }
+            
             var imag : UIImage!
             
             if item.imageid == 0 {
@@ -129,7 +135,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
                 imag = UIImage(named: "2")
             }
-            call.configureCell(imag, text: item.title!, note: item.noteEvent!)
+            call.configureCell(imag, text: item.title!, note: item.noteEvent!, date: dateStr)
             return call
         } else {
             return eventCell()
@@ -154,6 +160,8 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func deleteEvent(atIndex: Int) {
+        self.removeEvent(atIndex)
+        print("Delete in list")
         let appDelegate    = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let objectToRemove = items[atIndex] as NSManagedObject
@@ -170,7 +178,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         items.removeAtIndex(atIndex)
-        self.removeEvent(atIndex)
         tableView.reloadData()
     }
     
@@ -189,8 +196,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func removeEvent(atIndex: Int) {
         
-        if items.count != 0 {
-        
         let item = items[atIndex]
         
         let eventStore = EKEventStore()
@@ -206,6 +211,5 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         
         }
-    }
 
 }
