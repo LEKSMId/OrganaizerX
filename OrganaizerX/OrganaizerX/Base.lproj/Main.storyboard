@@ -229,24 +229,23 @@
                                     <segment title="1 day"/>
                                     <segment title="2 days"/>
                                     <segment title="1 week"/>
-                                    <segment title="none"/>
                                 </segments>
                                 <connections>
                                     <action selector="timeAlertSetBirthday:" destination="5gP-pu-Jz2" eventType="valueChanged" id="URx-pU-T4t"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A2s-60-k5F">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A2s-60-k5F">
                                 <rect key="frame" x="150" y="367" width="300" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="bLc-Xl-lMz"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="none"/>
+                                    <segment title="15 min"/>
+                                    <segment title="1 hour"/>
+                                    <segment title="2 hours"/>
                                     <segment title="1 day"/>
-                                    <segment title="2 day"/>
+                                    <segment title="2 days"/>
                                     <segment title="1 week"/>
-                                    <segment title=""/>
-                                    <segment title=""/>
                                 </segments>
                                 <connections>
                                     <action selector="timeAlertSetEvent:" destination="5gP-pu-Jz2" eventType="valueChanged" id="9B7-xo-eED"/>

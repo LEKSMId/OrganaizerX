@@ -136,19 +136,16 @@ class addEvent: UIViewController, UITextFieldDelegate {
     @IBAction func timeAlertSetBirthday(sender: UISegmentedControl) {
         switch alertSwitcherBirthday.selectedSegmentIndex {
         case 0:
-            print("In time")
-            alartTime = 0
-        case 1:
             print("alertTime 1 День")
             alartTime = 60 * 60 * 24
-        case 2:
+        case 1:
             print("alertTime 2 дня")
             alartTime = 60 * 60 * 24 * 2
-        case 3:
+        case 2:
             print("alertTime 1 неделя")
             alartTime = 60 * 60 * 24 * 7
         default:
-            alartTime = 0;
+            alartTime = 60 * 60 * 24;
         }
     }
     
@@ -192,6 +189,8 @@ class addEvent: UIViewController, UITextFieldDelegate {
                 alertSwitcherEvent.hidden = false
                 alertSwitcherBirthday.hidden = true
             }
+            alertSwitcherBirthday.selectedSegmentIndex = 0
+            self.alartTime = 60 * 60 * 24
             pickerDate.hidden = false
             pickerDateTime.hidden = true
         case 1:
@@ -205,6 +204,8 @@ class addEvent: UIViewController, UITextFieldDelegate {
                 alertSwitcherEvent.hidden = false
                 alertSwitcherBirthday.hidden = true
             }
+            alertSwitcherEvent.selectedSegmentIndex = 0
+            self.alartTime = 15 * 60
             pickerDate.hidden = true
             pickerDateTime.hidden = false
         default:
@@ -217,49 +218,98 @@ class addEvent: UIViewController, UITextFieldDelegate {
         let eventStore = EKEventStore()
         let nameEvent = titleEvent.text! as String
         let noteEvent = noteField.text! as String
-        
-        if eventTypeSwitcher.selectedSegmentIndex == 0 {
-            
-            let startDate = pickerDate.date
-            let endDate = pickerDate.date
-            
-            if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-                eventStore.requestAccessToEntityType(.Event, completion: {
-                    granted, error in
-                    self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime: self.alartTime)
-                    print("24 hour")
-                    print(self.alartTime)
-                    
-                })
-            } else {
-                if eventTypeSwitcher.selectedSegmentIndex == 0 {
-                    createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime:  alartTime)
-                    print("24 hour")
-                    print(alartTime)
 
+            if eventTypeSwitcher.selectedSegmentIndex == 0 {
+                
+                let startDate = pickerDate.date
+                let endDate = pickerDate.date
+                
+                if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+                    eventStore.requestAccessToEntityType(.Event, completion: {
+                        granted, error in
+                        self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime: self.alartTime)
+                        print("24 hour")
+                        print(self.alartTime)
+                        
+                    })
+                } else {
+                    if eventTypeSwitcher.selectedSegmentIndex == 0 {
+                        createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true, alarmSetTime:  alartTime)
+                        print("24 hour")
+                        print(alartTime)
+
+                    }
+                }
+            } else {
+            
+                        let startDate = pickerDateTime.date
+                        let endDate = startDate.dateByAddingTimeInterval(60 * 60)
+            
+                        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+                        eventStore.requestAccessToEntityType(.Event, completion: {
+                        granted, error in
+                            self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime:  self.alartTime)
+                            print("1 hour")
+                            print(self.alartTime)
+                        })
+                        } else {
+                            createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime: alartTime)
+                print("1 hour")
+                            print(alartTime)
+                            print("\(startDate)")
+                }
                 }
             }
-        } else {
         
+    func sendEventInfoNoneAlarm () {
+        
+        
+        let eventStore = EKEventStore()
+        let nameEvent = titleEvent.text! as String
+        let noteEvent = noteField.text! as String
+        
+        
+        if eventTypeSwitcher.selectedSegmentIndex == 0 {
+                    
+                    let startDate = pickerDate.date
+                    let endDate = pickerDate.date
+                    
+                    if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+                        eventStore.requestAccessToEntityType(.Event, completion: {
+                            granted, error in
+                            self.createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
+                            print("24 hour")
+                            print(self.alartTime)
+                            
+                        })
+                    } else {
+                        if eventTypeSwitcher.selectedSegmentIndex == 0 {
+                            createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: true)
+                            print("24 hour")
+                            print(alartTime)
+                            
+                        }
+                    }
+                } else {
+                    
                     let startDate = pickerDateTime.date
                     let endDate = startDate.dateByAddingTimeInterval(60 * 60)
-        
+                    
                     if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-                    eventStore.requestAccessToEntityType(.Event, completion: {
-                    granted, error in
-                        self.createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime:  self.alartTime)
-                        print("1 hour")
-                        print(self.alartTime)
-                    })
+                        eventStore.requestAccessToEntityType(.Event, completion: {
+                            granted, error in
+                            self.createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
+                            print("1 hour")
+                            print(self.alartTime)
+                        })
                     } else {
-                        createEvent(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false, alarmSetTime: alartTime)
-            print("1 hour")
+                        createEventNoneAlarm(eventStore, title: nameEvent, startDate: startDate, endDate: endDate, note: noteEvent, allDay: false)
+                        print("1 hour")
                         print(alartTime)
                         print("\(startDate)")
-            }
-        
-        
-        }
+
+                    }
+                }
     }
     
     func clearTextField() {
@@ -268,7 +318,11 @@ class addEvent: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveEvent(sender: AnyObject) {
-        sendEventInfo()
+        if powerAlert.on {
+            sendEventInfoNoneAlarm()
+        } else {
+            sendEventInfo()
+        }
         saveNewItem()
         clearTextField()
     }
@@ -284,6 +338,22 @@ class addEvent: UIViewController, UITextFieldDelegate {
         event.endDate = endDate
         event.allDay = allDay
         event.addAlarm(alarm)
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        do {
+            try eventStore.saveEvent(event, span: .ThisEvent)
+            savedEventId = event.eventIdentifier
+        } catch {
+            print("Bad things happened")
+        }
+    }
+    
+    func createEventNoneAlarm(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate, note: String, allDay: Bool) {
+        let event = EKEvent(eventStore: eventStore)
+        event.title = title
+        event.notes = note
+        event.startDate = startDate
+        event.endDate = endDate
+        event.allDay = allDay
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.saveEvent(event, span: .ThisEvent)
