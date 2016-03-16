@@ -12,7 +12,6 @@ class eventCell: UITableViewCell {
     
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var mainLbl: UILabel!
-    @IBOutlet weak var noteLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
 
     
@@ -20,11 +19,10 @@ class eventCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configureCell(image: UIImage, text: String, note: String, date: String) {
+    func configureCell(image: UIImage, text: String, date: String) {
         
         mainImg.image = image
         mainLbl.text = text
-        noteLbl.text = note
         dateLbl.text = date
     }
     

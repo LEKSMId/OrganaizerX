@@ -81,7 +81,7 @@ class addEvent: UIViewController, UITextFieldDelegate {
                 return dateFormatter.stringFromDate(item.date!)
             }
             
-            call.configureCell(imag, text: item.title!, note: item.noteEvent!, date: dateStr)
+            call.configureCell(imag, text: item.title!, date: dateStr)
             return call
         } else {
             return eventCell()

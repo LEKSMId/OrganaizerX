@@ -29,9 +29,9 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.searchBar.delegate = self
+    
         sortEvent()
-            
-        
+    
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }
@@ -135,7 +135,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
                 imag = UIImage(named: "2")
             }
-            call.configureCell(imag, text: item.title!, note: item.noteEvent!, date: dateStr)
+            call.configureCell(imag, text: item.title!, date: dateStr)
             return call
         } else {
             return eventCell()
